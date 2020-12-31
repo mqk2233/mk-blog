@@ -1,0 +1,58 @@
+2020-12-31 10:17:34.292 [main] INFO  com.mk.blog.MkBlogApplication - Starting MkBlogApplication using Java 1.8.0_271 on LAPTOP-FRDD7UM6 with PID 25224 (D:\WorkSpace\Idea\blog\mk-blog-web\target\classes started by MK in D:\WorkSpace\Idea\blog)
+2020-12-31 10:17:34.295 [main] INFO  com.mk.blog.MkBlogApplication - The following profiles are active: dev
+2020-12-31 10:17:35.366 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-12-31 10:17:35.369 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2020-12-31 10:17:35.396 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 9 ms. Found 0 Redis repository interfaces.
+2020-12-31 10:17:35.755 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'com.alibaba.druid.spring.boot.autoconfigure.stat.DruidSpringAopConfiguration' of type [com.alibaba.druid.spring.boot.autoconfigure.stat.DruidSpringAopConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-12-31 10:17:35.768 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'spring.datasource.druid-com.alibaba.druid.spring.boot.autoconfigure.properties.DruidStatProperties' of type [com.alibaba.druid.spring.boot.autoconfigure.properties.DruidStatProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-12-31 10:17:35.775 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'advisor' of type [org.springframework.aop.support.RegexpMethodPointcutAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-12-31 10:17:35.985 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2020-12-31 10:17:35.992 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2020-12-31 10:17:35.992 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2020-12-31 10:17:35.993 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.41]
+2020-12-31 10:17:36.095 [main] INFO  o.a.c.c.C.[.[localhost].[/blog] - Initializing Spring embedded WebApplicationContext
+2020-12-31 10:17:36.096 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1737 ms
+2020-12-31 10:17:36.297 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2020-12-31 10:17:37.928 [main] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2020-12-31 10:17:38.408 [main] INFO  org.redisson.Version - Redisson 3.13.4
+2020-12-31 10:17:38.766 [redisson-netty-2-22] INFO  o.r.c.p.MasterPubSubConnectionPool - 1 connections initialized for /127.0.0.1:6379
+2020-12-31 10:17:38.778 [redisson-netty-2-19] INFO  o.r.c.pool.MasterConnectionPool - 24 connections initialized for /127.0.0.1:6379
+2020-12-31 10:17:39.132 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2020-12-31 10:17:40.063 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 2 endpoint(s) beneath base path '/actuator'
+2020-12-31 10:17:40.094 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2020-12-31 10:17:40.103 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path '/blog'
+2020-12-31 10:17:40.115 [main] INFO  com.mk.blog.MkBlogApplication - Started MkBlogApplication in 6.354 seconds (JVM running for 7.039)
+2020-12-31 10:17:40.392 [RMI TCP Connection(1)-192.168.0.123] INFO  o.a.c.c.C.[.[localhost].[/blog] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-12-31 10:17:40.392 [RMI TCP Connection(1)-192.168.0.123] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2020-12-31 10:17:40.394 [RMI TCP Connection(1)-192.168.0.123] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2020-12-31 12:27:22.337 [main] INFO  com.mk.blog.MkBlogApplication - Starting MkBlogApplication using Java 1.8.0_271 on LAPTOP-FRDD7UM6 with PID 31016 (D:\WorkSpace\Idea\blog\mk-blog-web\target\classes started by MK in D:\WorkSpace\Idea\blog)
+2020-12-31 12:27:22.339 [main] INFO  com.mk.blog.MkBlogApplication - The following profiles are active: dev
+2020-12-31 12:27:23.218 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-12-31 12:27:23.220 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2020-12-31 12:27:23.241 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 9 ms. Found 0 Redis repository interfaces.
+2020-12-31 12:27:23.625 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'com.alibaba.druid.spring.boot.autoconfigure.stat.DruidSpringAopConfiguration' of type [com.alibaba.druid.spring.boot.autoconfigure.stat.DruidSpringAopConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-12-31 12:27:23.641 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'spring.datasource.druid-com.alibaba.druid.spring.boot.autoconfigure.properties.DruidStatProperties' of type [com.alibaba.druid.spring.boot.autoconfigure.properties.DruidStatProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-12-31 12:27:23.648 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'advisor' of type [org.springframework.aop.support.RegexpMethodPointcutAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-12-31 12:27:23.918 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2020-12-31 12:27:23.926 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2020-12-31 12:27:23.926 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2020-12-31 12:27:23.927 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.41]
+2020-12-31 12:27:23.990 [main] INFO  o.a.c.c.C.[.[localhost].[/blog] - Initializing Spring embedded WebApplicationContext
+2020-12-31 12:27:23.991 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1602 ms
+2020-12-31 12:27:24.246 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2020-12-31 12:27:25.750 [main] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2020-12-31 12:27:26.264 [main] INFO  org.redisson.Version - Redisson 3.13.4
+2020-12-31 12:27:26.611 [redisson-netty-2-19] INFO  o.r.c.p.MasterPubSubConnectionPool - 1 connections initialized for /127.0.0.1:6379
+2020-12-31 12:27:26.624 [redisson-netty-2-21] INFO  o.r.c.pool.MasterConnectionPool - 24 connections initialized for /127.0.0.1:6379
+2020-12-31 12:27:27.013 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2020-12-31 12:27:28.105 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 2 endpoint(s) beneath base path '/actuator'
+2020-12-31 12:27:28.149 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2020-12-31 12:27:28.172 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path '/blog'
+2020-12-31 12:27:28.189 [main] INFO  com.mk.blog.MkBlogApplication - Started MkBlogApplication in 6.281 seconds (JVM running for 7.954)
+2020-12-31 12:27:28.772 [RMI TCP Connection(3)-192.168.0.123] INFO  o.a.c.c.C.[.[localhost].[/blog] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-12-31 12:27:28.772 [RMI TCP Connection(3)-192.168.0.123] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2020-12-31 12:27:28.774 [RMI TCP Connection(3)-192.168.0.123] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+2020-12-31 12:29:16.074 [http-nio-8080-exec-2] INFO  o.s.api.AbstractOpenApiResource - Init duration for springdoc-openapi is: 130 ms
+2020-12-31 14:51:17.977 [SpringContextShutdownHook] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2020-12-31 14:51:18.004 [SpringContextShutdownHook] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2020-12-31 14:51:18.041 [SpringContextShutdownHook] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed

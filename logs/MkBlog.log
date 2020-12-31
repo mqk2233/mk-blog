@@ -1,0 +1,85 @@
+2020-12-29 11:48:37.159 [main] INFO  com.mk.blog.MkBlogApplication - Starting MkBlogApplication using Java 1.8.0_271 on LAPTOP-FRDD7UM6 with PID 8956 (D:\WorkSpace\Idea\blog\mk-blog-web\target\classes started by MK in D:\WorkSpace\Idea\blog)
+2020-12-29 11:48:37.162 [main] INFO  com.mk.blog.MkBlogApplication - The following profiles are active: dev
+2020-12-29 11:48:38.064 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2020-12-29 11:48:38.071 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2020-12-29 11:48:38.072 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2020-12-29 11:48:38.072 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.41]
+2020-12-29 11:48:38.128 [main] INFO  o.a.c.c.C.[.[localhost].[/blog] - Initializing Spring embedded WebApplicationContext
+2020-12-29 11:48:38.128 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 914 ms
+2020-12-29 11:48:38.206 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2020-12-29 11:48:38.281 [main] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2020-12-29 11:48:40.410 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2020-12-29 11:48:40.936 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2020-12-29 11:48:40.954 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path '/blog'
+2020-12-29 11:48:40.965 [main] INFO  com.mk.blog.MkBlogApplication - Started MkBlogApplication in 4.205 seconds (JVM running for 4.803)
+2020-12-29 11:48:52.705 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[.[localhost].[/blog] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-12-29 11:48:52.706 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2020-12-29 11:48:52.706 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 0 ms
+2020-12-29 11:48:52.767 [http-nio-8080-exec-1] DEBUG c.m.b.mapper.ArticleMapper.selectAll - ==>  Preparing: SELECT id, category_id, title, img, content_md, content_html, status, write_time, modify_time, is_prohibit from article
+2020-12-29 11:48:52.785 [http-nio-8080-exec-1] DEBUG c.m.b.mapper.ArticleMapper.selectAll - ==> Parameters: 
+2020-12-29 11:48:52.968 [http-nio-8080-exec-1] DEBUG c.m.b.mapper.ArticleMapper.selectAll - <==      Total: 5
+2020-12-29 11:49:14.944 [SpringContextShutdownHook] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2020-12-29 11:49:14.945 [SpringContextShutdownHook] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2020-12-29 11:49:14.949 [SpringContextShutdownHook] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2020-12-29 11:49:23.880 [main] INFO  com.mk.blog.MkBlogApplication - Starting MkBlogApplication using Java 1.8.0_271 on LAPTOP-FRDD7UM6 with PID 15180 (D:\WorkSpace\Idea\blog\mk-blog-web\target\classes started by MK in D:\WorkSpace\Idea\blog)
+2020-12-29 11:49:23.882 [main] INFO  com.mk.blog.MkBlogApplication - The following profiles are active: dev
+2020-12-29 11:49:24.763 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2020-12-29 11:49:24.770 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2020-12-29 11:49:24.771 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2020-12-29 11:49:24.771 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.41]
+2020-12-29 11:49:24.832 [main] INFO  o.a.c.c.C.[.[localhost].[/blog] - Initializing Spring embedded WebApplicationContext
+2020-12-29 11:49:24.832 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 903 ms
+2020-12-29 11:49:24.912 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2020-12-29 11:49:24.989 [main] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2020-12-29 11:49:26.315 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2020-12-29 11:49:26.773 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path '/blog'
+2020-12-29 11:49:26.783 [main] INFO  com.mk.blog.MkBlogApplication - Started MkBlogApplication in 3.219 seconds (JVM running for 10.334)
+2020-12-29 11:49:26.863 [SpringContextShutdownHook] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2020-12-29 11:49:26.864 [SpringContextShutdownHook] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2020-12-29 11:49:26.867 [SpringContextShutdownHook] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2020-12-29 11:49:28.718 [main] INFO  com.mk.blog.MkBlogApplication - Starting MkBlogApplication using Java 1.8.0_271 on LAPTOP-FRDD7UM6 with PID 14908 (D:\WorkSpace\Idea\blog\mk-blog-web\target\classes started by MK in D:\WorkSpace\Idea\blog)
+2020-12-29 11:49:28.723 [main] INFO  com.mk.blog.MkBlogApplication - The following profiles are active: dev
+2020-12-29 11:49:29.725 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2020-12-29 11:49:29.733 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2020-12-29 11:49:29.734 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2020-12-29 11:49:29.734 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.41]
+2020-12-29 11:49:29.795 [main] INFO  o.a.c.c.C.[.[localhost].[/blog] - Initializing Spring embedded WebApplicationContext
+2020-12-29 11:49:29.795 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1000 ms
+2020-12-29 11:49:29.871 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2020-12-29 11:49:29.945 [main] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2020-12-29 11:49:31.596 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2020-12-29 11:49:31.995 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2020-12-29 11:49:32.009 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path '/blog'
+2020-12-29 11:49:32.017 [main] INFO  com.mk.blog.MkBlogApplication - Started MkBlogApplication in 3.776 seconds (JVM running for 4.336)
+2020-12-29 11:49:47.412 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[.[localhost].[/blog] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-12-29 11:49:47.412 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2020-12-29 11:49:47.413 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2020-12-29 11:49:47.462 [http-nio-8080-exec-1] DEBUG c.m.b.mapper.ArticleMapper.selectAll - ==>  Preparing: SELECT id, category_id, title, img, content_md, content_html, status, write_time, modify_time, is_prohibit from article
+2020-12-29 11:49:47.483 [http-nio-8080-exec-1] DEBUG c.m.b.mapper.ArticleMapper.selectAll - ==> Parameters: 
+2020-12-29 11:49:47.616 [http-nio-8080-exec-1] DEBUG c.m.b.mapper.ArticleMapper.selectAll - <==      Total: 5
+2020-12-29 11:50:50.883 [SpringContextShutdownHook] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2020-12-29 11:50:50.884 [SpringContextShutdownHook] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2020-12-29 11:50:50.887 [SpringContextShutdownHook] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2020-12-29 11:50:57.561 [main] INFO  com.mk.blog.MkBlogApplication - Starting MkBlogApplication using Java 1.8.0_271 on LAPTOP-FRDD7UM6 with PID 5528 (D:\WorkSpace\Idea\blog\mk-blog-web\target\classes started by MK in D:\WorkSpace\Idea\blog)
+2020-12-29 11:50:57.564 [main] INFO  com.mk.blog.MkBlogApplication - The following profiles are active: dev
+2020-12-29 11:50:58.423 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2020-12-29 11:50:58.429 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2020-12-29 11:50:58.429 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2020-12-29 11:50:58.430 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.41]
+2020-12-29 11:50:58.480 [main] INFO  o.a.c.c.C.[.[localhost].[/blog] - Initializing Spring embedded WebApplicationContext
+2020-12-29 11:50:58.480 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 874 ms
+2020-12-29 11:50:58.551 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2020-12-29 11:50:58.616 [main] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2020-12-29 11:51:00.371 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2020-12-29 11:51:00.775 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2020-12-29 11:51:00.789 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path '/blog'
+2020-12-29 11:51:00.797 [main] INFO  com.mk.blog.MkBlogApplication - Started MkBlogApplication in 3.626 seconds (JVM running for 4.174)
+2020-12-29 11:51:45.225 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[.[localhost].[/blog] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-12-29 11:51:45.225 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2020-12-29 11:51:45.226 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2020-12-29 11:51:45.273 [http-nio-8080-exec-1] DEBUG c.m.b.mapper.ArticleMapper.selectAll - ==>  Preparing: SELECT id, category_id, title, img, content_md, content_html, status, write_time, modify_time, is_prohibit from article
+2020-12-29 11:51:45.291 [http-nio-8080-exec-1] DEBUG c.m.b.mapper.ArticleMapper.selectAll - ==> Parameters: 
+2020-12-29 11:51:45.617 [http-nio-8080-exec-1] DEBUG c.m.b.mapper.ArticleMapper.selectAll - <==      Total: 5
+2020-12-29 11:55:00.969 [SpringContextShutdownHook] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2020-12-29 11:55:00.970 [SpringContextShutdownHook] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2020-12-29 11:55:00.974 [SpringContextShutdownHook] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
