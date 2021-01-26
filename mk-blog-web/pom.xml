@@ -45,11 +45,9 @@
             <artifactId>spring-boot-starter-aop</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.pig4cloud.plugin</groupId>
-            <artifactId>idempotent-spring-boot-starter</artifactId>
-            <version>0.0.2</version>
+            <groupId>p6spy</groupId>
+            <artifactId>p6spy</artifactId>
         </dependency>
-
     </dependencies>
 
     <build>

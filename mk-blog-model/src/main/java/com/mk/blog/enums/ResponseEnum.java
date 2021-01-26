@@ -19,14 +19,13 @@ public enum ResponseEnum {
     TOKEN_NULL(100, "请求token为空"), TOKEN_ERROR(101, "无效的token"),
     LOGIN_ERROR(102, "用户名或密码错误"), PARAM_ERROR(103, "请求参数有误"),
     NO_PARAM(105, "缺少必要参数"), OPERATION_FAILED(106, "操作失败"),
-    LOGIN_OVERTIME(107, "登录过期"),
-
+    LOGIN_OVERTIME(107, "登录过期"),IDEMPOTENT_ERROR(108, "请勿频繁请求"),
 
     NOT_LOGGED(401, "未登录，请先登录"),
     ILLEGAL_REQUESTS(403, "非法请求"), VRIFY_CODE_INCORRECT(418, "验证码不正确"),
+    USER_INCORRECT(419, "用户名或密码不正确"), VRIFY_CODE_INVALID(420, "验证码已失效");
 
-    USER_INCORRECT(419, "用户名或密码不正确"), VRIFY_CODE_INVALID(420, "验证码已失效"),;
-    private Integer code;
+    private final Integer code;
 
-    private String msg;
+    private final String msg;
 }

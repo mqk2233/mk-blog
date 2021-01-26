@@ -18,7 +18,7 @@ import java.util.concurrent.TimeUnit;
 public class RedisServiceImpl implements IRedisService {
 
     @Resource
-    private RedisTemplate<Object, Object> redisTemplate;
+    private RedisTemplate<String, Object> redisTemplate;
 
     @Override
     public void set(String key, Object value, long time) {

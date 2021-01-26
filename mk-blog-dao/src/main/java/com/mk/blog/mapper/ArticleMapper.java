@@ -1,20 +1,13 @@
 package com.mk.blog.mapper;
 
-
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.mk.blog.entity.Article;
-import org.springframework.stereotype.Repository;
-
-import java.util.List;
-
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
  * @author MK
- * @date 2020-12-24 01:46:10
+ * @date 2021-01-25 18:00:56
  * @describe 文章表mapper类
  */
-@Repository
 public interface ArticleMapper extends BaseMapper<Article> {
 
-    List<Article> selectAll();
 }

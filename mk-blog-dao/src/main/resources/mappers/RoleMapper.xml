@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mk.blog.mapper.RoleMapper">
+
+  <!-- 通用查询映射结果 -->
+  <resultMap id="BaseResultMap" type="com.mk.blog.entity.Role">
+    <id column="id" property="id" />
+    <result column="role_name" property="roleName" />
+    <result column="remarks" property="remarks" />
+    <result column="create_time" property="createTime" />
+    <result column="modify_time" property="modifyTime" />
+    <result column="is_deleted" property="isDeleted" />
+  </resultMap>
+  <!-- 通用查询结果列 -->
+  <sql id="Base_Column_List">
+  id, role_name, remarks, create_time, modify_time, is_deleted
+  </sql>
+  <select id="selectRoleByUserId" resultType="java.lang.String">
+    SELECT
+      t2.role_name
+    FROM
+      user_role t1
+      JOIN role t2 ON t1.role_id = t2.id
+    WHERE
+      t1.user_id = #{userId}
+  </select>
+</mapper>

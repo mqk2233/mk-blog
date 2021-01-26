@@ -1,38 +1,33 @@
 package com.mk.blog.mbpg;
 
+import cn.hutool.core.date.DateUtil;
+import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.core.toolkit.StringPool;
 import com.baomidou.mybatisplus.generator.AutoGenerator;
 import com.baomidou.mybatisplus.generator.InjectionConfig;
 import com.baomidou.mybatisplus.generator.config.*;
+import com.baomidou.mybatisplus.generator.config.po.TableFill;
 import com.baomidou.mybatisplus.generator.config.po.TableInfo;
 import com.baomidou.mybatisplus.generator.config.rules.DateType;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 import com.sun.javafx.PlatformUtil;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
+ * @describe mybatis-plus-generator代码生成
  * @author MK
  * @date 2020/12/21
  * see https://www.cnblogs.com/miaoying/p/12625920.html & https://baomidou.com/guide/generator.html
  */
 public class CodeGenerator {
 
-    /**
-     * modular 名字
-     */
-    public static final String MODULAR_NAME = "";
 
     /**
-     * 需要去除的表前缀
+     * 作者
      */
-    public static final String COMMON_PRE_FIX = "";
+    public static final String AUTHOR = "MK";
 
     /**
      * 基本路径
@@ -51,10 +46,6 @@ public class CodeGenerator {
 
     private static final String CONTROLLER_PATH = PARENT_DIR + "/mk-blog-web/src/main/java/com/mk/blog/controller";
 
-    /**
-     * 作者
-     */
-    public static final String AUTHOR = "MK";
 
     public static final String JDBC_MYSQL_URL = "jdbc:mysql://193.112.147.216:3306/blog?serverTimezone=UTC&characterEncoding=utf8";
 
@@ -62,7 +53,13 @@ public class CodeGenerator {
 
     public static final String JDBC_USERNAME = "root";
 
-    public static final String JDBC_PASSWORD = "39397457c1e2e3a3";
+    public static final String JDBC_PASSWORD = "MKmysql123456.";
+
+    /**
+     * 需要进行自动填充的字段
+     */
+    private static final List<TableFill> TABLE_FILL_LIST = Arrays.asList(new TableFill("create_time", FieldFill.INSERT),
+            new TableFill("modify_time", FieldFill.INSERT_UPDATE));
 
     public static void main(String[] args) {
         autoGenerator("article");
@@ -90,8 +87,8 @@ public class CodeGenerator {
         return new InjectionConfig() {
             @Override
             public void initMap() {
-                Map<String, Object> map = new HashMap<>();
-                map.put("dateTime", getDateTime());
+                Map<String, Object> map = new HashMap<>(1);
+                map.put("dateTime", DateUtil.now());
                 setMap(map);
                 List<FileOutConfig> fileOutConfigList = new ArrayList<>();
                 // 自定义配置会被优先输出
@@ -123,8 +120,8 @@ public class CodeGenerator {
                 .setRestControllerStyle(true)
                 .setControllerMappingHyphenStyle(true)
                 .setVersionFieldName("")
-                .setLogicDeleteFieldName("")
-                .setTablePrefix(COMMON_PRE_FIX)
+                .setTableFillList(TABLE_FILL_LIST)
+                .setLogicDeleteFieldName("is_deleted")
                 .setEntityLombokModel(true);
     }
 
@@ -136,7 +133,7 @@ public class CodeGenerator {
      * @date 2020/12/23 15:39
      */
     private static PackageConfig getPackageConfig() {
-        Map<String, String> pathInfo = new HashMap<>();
+        Map<String, String> pathInfo = new HashMap<>(5);
         pathInfo.put(ConstVal.ENTITY_PATH, ENTITY_PATH);
         pathInfo.put(ConstVal.MAPPER_PATH, MAPPER_PATH);
         pathInfo.put(ConstVal.SERVICE_PATH, SERVICE_PATH);
@@ -154,7 +151,7 @@ public class CodeGenerator {
 
     /**
      * 数据源配置
-     *w
+     *
      * @return {@link DataSourceConfig }
      * @author MK
      * @date 2020/12/23 15:38
@@ -176,7 +173,7 @@ public class CodeGenerator {
      */
     private static GlobalConfig getGlobalConfig() {
         String projectPath = System.getProperty("user.dir");
-        String filePath = projectPath + "/" + MODULAR_NAME + SRC_MAIN_JAVA;
+        String filePath = projectPath + "/" + SRC_MAIN_JAVA;
         if (PlatformUtil.isWindows()) {
             filePath = filePath.replaceAll("/+|\\\\+", "\\\\");
         } else {
@@ -184,8 +181,8 @@ public class CodeGenerator {
         }
         return new GlobalConfig()
                 .setOutputDir(filePath)
-                .setDateType(DateType.ONLY_DATE)
-                .setIdType(IdType.ASSIGN_UUID)
+                .setDateType(DateType.TIME_PACK)
+                .setIdType(IdType.ASSIGN_ID)
                 .setAuthor(AUTHOR)
                 .setFileOverride(true)
                 .setBaseColumnList(true)
@@ -209,18 +206,5 @@ public class CodeGenerator {
                 .setEntity("/templates/generator/entity.java.vm")
                 .setMapper("/templates/generator/mapper.java.vm")
                 .setXml("/templates/generator/mapper.xml.vm");
-    }
-
-    /**
-     * 获取当前时间
-     *
-     * @return {@link String }
-     * @author MK
-     * @date 2020/12/23 15:41
-     */
-    private static String getDateTime() {
-        LocalDateTime localDate = LocalDateTime.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        return localDate.format(formatter);
     }
 }

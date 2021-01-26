@@ -4,9 +4,9 @@ import ${package.Entity}.${entity};
 import ${superMapperClassPackage};
 
 /**
+ * @describe $!{table.comment}mapper类
  * @author ${author}
  * @date ${cfg.dateTime}
- * @describe $!{table.comment}mapper类
  */
 #if(${kotlin})
 interface ${table.mapperName} : ${superMapperClass}<${entity}>

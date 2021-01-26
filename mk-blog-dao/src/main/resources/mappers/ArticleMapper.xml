@@ -11,15 +11,12 @@
     <result column="content_md" property="contentMd" />
     <result column="content_html" property="contentHtml" />
     <result column="status" property="status" />
-    <result column="write_time" property="writeTime" />
+    <result column="create_time" property="createTime" />
     <result column="modify_time" property="modifyTime" />
-    <result column="is_prohibit" property="isProhibit" />
+    <result column="is_deleted" property="isDeleted" />
   </resultMap>
   <!-- 通用查询结果列 -->
   <sql id="Base_Column_List">
-  id, category_id, title, img, content_md, content_html, status, write_time, modify_time, is_prohibit
+  id, category_id, title, img, content_md, content_html, status, create_time, modify_time, is_deleted
   </sql>
-  <select id="selectAll" resultMap="BaseResultMap">
-    SELECT <include refid="Base_Column_List"/> from article
-  </select>
 </mapper>

@@ -10,10 +10,10 @@ spring:
     name: mk-blog
   # datasource
   datasource:
-    url: jdbc:mysql://193.112.147.216:3306/blog?serverTimezone=UTC&characterEncoding=utf8
+    url: jdbc:p6spy:mysql://127.0.0.1:3306/blog?serverTimezone=UTC&characterEncoding=utf8
     username: root
-    password: 39397457c1e2e3a3
-    driver-class-name: com.mysql.cj.jdbc.Driver
+    password: root
+    driver-class-name: com.p6spy.engine.spy.P6SpyDriver
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
       # 支持emoji表情配置
@@ -38,7 +38,7 @@ spring:
       # 监控统计用的filter:stat
       # 日志用的filter:log4j
       # 防御sql注入的filter:wall
-      filters: stat,wall,slf4j
+      filters: stat,slf4j
       # 通过connectProperties属性来打开mergeSql功能；慢SQL记录
       connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
       # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
@@ -88,6 +88,12 @@ spring:
 # mybatis-plus
 mybatis-plus:
   mapper-locations: classpath*:/mappers/*.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
+  global-config:
+    db-config:
+      logic-delete-value: 1
+      logic-not-delete-value: 0
 # spring-doc
 springdoc:
   api-docs:
@@ -95,3 +101,4 @@ springdoc:
   # 设置文档默认不展开
   swagger-ui:
     docExpansion: none
+

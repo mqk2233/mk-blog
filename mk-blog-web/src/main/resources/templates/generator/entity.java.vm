@@ -14,9 +14,9 @@ import lombok.NoArgsConstructor;
 #end
 
 /**
+ * @describe $!{table.comment}实体类
  * @author ${author}
  * @date ${cfg.dateTime}
- * @describe $!{table.comment}实体类
  */
 #if(${entityLombokModel})
 @Data
@@ -64,9 +64,9 @@ private static final long serialVersionUID=1L;
     #elseif(${field.fill})
     ## -----   存在字段填充设置   -----
     #if(${field.convert})
-    @TableField(value = "${field.name}", fill = FieldFill.${field.fill})
+@TableField(value = "${field.name}", fill = FieldFill.${field.fill})
     #else
-    @TableField(fill = FieldFill.${field.fill})
+@TableField(fill = FieldFill.${field.fill})
     #end
     #else
     @TableField("${field.name}")
@@ -77,7 +77,7 @@ private static final long serialVersionUID=1L;
 #end
 ## 逻辑删除注解
 #if(${logicDeleteFieldName}==${field.name})
-@TableLogic
+    @TableLogic
 #end
     private ${field.propertyType} ${field.propertyName};
     #end

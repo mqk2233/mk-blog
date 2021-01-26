@@ -7,9 +7,9 @@ import ${superServiceImplClassPackage};
 import org.springframework.stereotype.Service;
 
 /**
+ * @describe $!{table.comment}服务实现类
  * @author ${author}
  * @date ${cfg.dateTime}
- * @describe $!{table.comment}服务实现类
  */
 @Service
 #if(${kotlin})
