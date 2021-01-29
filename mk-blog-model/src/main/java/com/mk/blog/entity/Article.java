@@ -1,18 +1,22 @@
 package com.mk.blog.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import java.time.LocalDateTime;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.FieldFill;
+import com.baomidou.mybatisplus.annotation.TableLogic;
+import com.baomidou.mybatisplus.annotation.TableField;
+import java.io.Serializable;
 import com.baomidou.mybatisplus.annotation.*;
 import io.swagger.v3.oas.annotations.media.Schema;
-import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
-import java.io.Serializable;
-import java.time.LocalDateTime;
-
 /**
- * @author MK
- * @date 2021-01-25 18:00:56
  * @describe 文章表实体类
+ * @author MK
+ * @date 2021-01-29 14:44:28
  */
 @Data
 @AllArgsConstructor

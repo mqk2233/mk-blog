@@ -1,15 +1,16 @@
 package com.mk.blog.entity;
 
-import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
-import java.util.Date;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
-import java.io.Serializable;
-import com.baomidou.mybatisplus.annotation.*;
+import com.baomidou.mybatisplus.annotation.TableName;
 import io.swagger.v3.oas.annotations.media.Schema;
-import lombok.Data;
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.io.Serializable;
+import java.util.Date;
 
 /**
  * @author MK
@@ -21,13 +22,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @TableName("user")
 @Schema(title = "User对象", description = "用户表")
-public class User implements Serializable{
+public class User implements Serializable {
 
-private static final long serialVersionUID=1L;
+    private static final long serialVersionUID = 1L;
 
     @Schema(description = "唯一标识")
     @TableId(value = "id", type = IdType.ASSIGN_UUID)
-        private Long id;
+    private Long id;
 
     @Schema(description = "用户名")
     @TableField("user_name")

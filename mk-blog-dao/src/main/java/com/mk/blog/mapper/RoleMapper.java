@@ -6,9 +6,9 @@ import com.mk.blog.entity.Role;
 import java.util.List;
 
 /**
- * @author MK
- * @date 2021-01-25 16:42:05
  * @describe 角色表mapper类
+ * @author MK
+ * @date 2021-01-29 14:45:44
  */
 public interface RoleMapper extends BaseMapper<Role> {
 

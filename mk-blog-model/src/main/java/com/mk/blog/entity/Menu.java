@@ -14,16 +14,16 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
 /**
- * @describe 角色表实体类
+ * @describe 菜单表实体类
  * @author MK
- * @date 2021-01-29 14:45:44
+ * @date 2021-01-29 14:45:33
  */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@TableName("role")
-@Schema(title = "Role对象", description = "角色表")
-public class Role implements Serializable{
+@TableName("menu")
+@Schema(title = "Menu对象", description = "菜单表")
+public class Menu implements Serializable{
 
 private static final long serialVersionUID=1L;
 
@@ -31,9 +31,17 @@ private static final long serialVersionUID=1L;
     @TableId(value = "id", type = IdType.ASSIGN_ID)
         private Long id;
 
-    @Schema(description = "角色名")
-    @TableField("role_name")
-    private String roleName;
+    @Schema(description = "菜单名")
+    @TableField("menu_name")
+    private String menuName;
+
+    @Schema(description = "菜单类型（0-按钮，1-菜单）")
+    @TableField("menu_type")
+    private Integer menuType;
+
+    @Schema(description = "排序标识")
+    @TableField("sort")
+    private Integer sort;
 
     @Schema(description = "备注")
     @TableField("remarks")

@@ -1,7 +1,7 @@
 package com.mk.blog;
 
-import com.mk.blog.entity.User;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.mk.blog.entity.User;
 
 /**
  * @author MK
@@ -10,4 +10,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface IUserService extends IService<User> {
 
+
+    void login(String userName, String passWord, String verificationCode);
 }

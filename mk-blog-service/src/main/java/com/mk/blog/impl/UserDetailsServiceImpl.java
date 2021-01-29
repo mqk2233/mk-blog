@@ -13,6 +13,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 /**
@@ -33,10 +34,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     public UserDetails loadUserByUsername(String s) {
         QueryWrapper<User> wrapper = new QueryWrapper<>();
         wrapper.eq("user_name", s);
-        User user = userMapper.selectOne(wrapper);
-        if (null == user) {
-            throw new CustomException(ResponseEnum.LOGIN_ERROR);
-        }
+        User user = Optional.ofNullable(userMapper.selectOne(wrapper))
+                .orElseThrow(()-> new CustomException(ResponseEnum.LOGIN_ERROR));
         return new org.springframework.security.core.userdetails.User(
                 user.getUserName(),
                 passwordEncoder.encode(user.getPassWord()),

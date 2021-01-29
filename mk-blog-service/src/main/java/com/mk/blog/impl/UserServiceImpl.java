@@ -6,6 +6,8 @@ import com.mk.blog.IUserService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
+
 /**
  * @author MK
  * @date 2021-01-10 20:13:02
@@ -14,9 +16,13 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IUserService {
 
+    @Resource
+    private UserMapper userMapper;
 
-
+    @Override
     public void login(String userName, String passWord, String verificationCode) {
 
     }
+
+
 }

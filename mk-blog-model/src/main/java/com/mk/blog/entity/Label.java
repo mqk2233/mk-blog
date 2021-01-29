@@ -14,16 +14,16 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
 /**
- * @describe 角色表实体类
+ * @describe 标签表实体类
  * @author MK
- * @date 2021-01-29 14:45:44
+ * @date 2021-01-29 14:45:23
  */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@TableName("role")
-@Schema(title = "Role对象", description = "角色表")
-public class Role implements Serializable{
+@TableName("label")
+@Schema(title = "Label对象", description = "标签表")
+public class Label implements Serializable{
 
 private static final long serialVersionUID=1L;
 
@@ -31,13 +31,13 @@ private static final long serialVersionUID=1L;
     @TableId(value = "id", type = IdType.ASSIGN_ID)
         private Long id;
 
-    @Schema(description = "角色名")
-    @TableField("role_name")
-    private String roleName;
+    @Schema(description = "标签名")
+    @TableField("label_name")
+    private String labelName;
 
-    @Schema(description = "备注")
-    @TableField("remarks")
-    private String remarks;
+    @Schema(description = "排序标识")
+    @TableField("sort")
+    private Integer sort;
 
     @Schema(description = "创建时间")
     @TableField(fill = FieldFill.INSERT)

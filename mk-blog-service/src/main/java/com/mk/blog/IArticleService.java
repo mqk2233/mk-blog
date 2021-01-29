@@ -1,17 +1,13 @@
 package com.mk.blog;
 
-import com.baomidou.mybatisplus.extension.service.IService;
 import com.mk.blog.entity.Article;
-import com.mk.blog.vo.ArticleVo;
-
-import java.util.List;
+import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
- * @author MK
- * @date 2021-01-25 18:00:56
  * @describe 文章表服务类
+ * @author MK
+ * @date 2021-01-29 14:44:28
  */
 public interface IArticleService extends IService<Article> {
 
-    List<ArticleVo> selectAll();
 }

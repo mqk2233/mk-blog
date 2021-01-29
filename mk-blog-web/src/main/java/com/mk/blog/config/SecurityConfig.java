@@ -36,6 +36,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         // 允许所有接口访问
         http.authorizeRequests().anyRequest().permitAll();
+        // 允许跨越
+        http.cors();
         // 禁用csrf攻击防护机制
         http.csrf().disable().httpBasic();
         // 关闭session

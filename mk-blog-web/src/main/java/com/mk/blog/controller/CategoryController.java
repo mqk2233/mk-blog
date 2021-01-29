@@ -6,13 +6,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * @describe 文章表前端控制器
+ * @describe 类别表前端控制器
  * @author MK
- * @date 2021-01-29 14:44:28
+ * @date 2021-01-29 14:45:11
  */
 @RestController
-@RequestMapping("/article")
-public class ArticleController {
+@RequestMapping("/category")
+public class CategoryController {
 
 }
 
