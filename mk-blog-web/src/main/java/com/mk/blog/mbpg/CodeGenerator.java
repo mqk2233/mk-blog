@@ -62,7 +62,7 @@ public class CodeGenerator {
             new TableFill("modify_time", FieldFill.INSERT_UPDATE));
 
     public static void main(String[] args) {
-        autoGenerator("user_role");
+        autoGenerator("user");
     }
 
     public static void autoGenerator(String tableName) {

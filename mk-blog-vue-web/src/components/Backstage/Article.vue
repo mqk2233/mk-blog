@@ -30,7 +30,6 @@
         :columns="column"
         :data="list"
         :loading="loading"
-        border
         no-data-text="没有数据呀 ( ๑ŏ ﹏ ŏ๑ )"
         stripe
         tooltip
@@ -45,6 +44,7 @@
             size="small"
             style="margin-right: 5px"
             type="success"
+            ghost
             >发布
           </Button>
           <Button
@@ -52,9 +52,10 @@
             size="small"
             style="margin-right: 5px"
             type="info"
+            ghost
             >编辑
           </Button>
-          <Button @click="doDelArticle(row.id)" size="small" type="error"
+          <Button @click="doDelArticle(row.id)" size="small" type="error" ghost
             >删除
           </Button>
         </template>
@@ -111,7 +112,7 @@ export default {
               "Tag",
               {
                 props: {
-                  color: params.row.status === 0 ? "primary" : "success"
+                  color: params.row.status === 0 ? "cyan" : "green"
                 }
               },
               params.row.status === 0 ? "已保存" : "已发布"
@@ -121,16 +122,16 @@ export default {
         {
           align: "center",
           title: "是否启用",
-          key: "isProhibit",
+          key: "isDeleted",
           render: (h, params) => {
             return h(
               "Tag",
               {
                 props: {
-                  color: params.row.isProhibit === 1 ? "success" : "error"
+                  color: params.row.isDeleted === 0 ? "green" : "red"
                 }
               },
-              params.row.isProhibit === 1 ? "是" : "否"
+              params.row.isDeleted === 0 ? "是" : "否"
             );
           }
         },
@@ -146,7 +147,7 @@ export default {
         id: 0,
         title: "",
         status: 0,
-        prohibit: 1
+        isDeleted: 0
       },
       imgHeader: this.$api.img.headers
     };

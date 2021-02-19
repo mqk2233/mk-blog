@@ -2,6 +2,7 @@ package com.mk.blog.handler;
 
 import cn.hutool.core.exceptions.ExceptionUtil;
 import cn.hutool.log.StaticLog;
+import com.baomidou.mybatisplus.core.exceptions.MybatisPlusException;
 import com.mk.blog.enums.ResponseEnum;
 import com.mk.blog.exception.CustomException;
 import com.mk.blog.http.ResponseEntity;
@@ -14,10 +15,11 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import javax.validation.ConstraintViolationException;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
- * @describe 全局异常处理器
  * @author MK
+ * @describe 全局异常处理器
  * @date 2021/1/26
  */
 @RestControllerAdvice
@@ -34,7 +36,7 @@ public class BaseExceptionHandler {
      */
     @ExceptionHandler(CustomException.class)
     public ResponseEntity<?> customExceptionHandle(CustomException e) {
-        StaticLog.error("MyException ->{}", e.getEnum().getMsg());
+        StaticLog.warn("MyException -> {}", e.getEnum().getMsg());
         return ResponseEntity.buildByEnum(e.getEnum());
     }
 
@@ -43,17 +45,17 @@ public class BaseExceptionHandler {
      */
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<?> validationExceptionHandle(MethodArgumentNotValidException e) {
-        StringBuilder errorMsg = new StringBuilder();
         List<ObjectError> list = e.getBindingResult().getAllErrors();
-        list.forEach(error -> errorMsg.append(error.getDefaultMessage())
-                .append(list.size() > 1 ? "," : ""));
-        StaticLog.error(e);
-        return ResponseEntity.buildByMsg(errorMsg.toString(), 199);
+        String errorMsg = list.stream()
+                .map(ObjectError::getDefaultMessage)
+                .collect(Collectors.joining(","));
+        StaticLog.error(ExceptionUtil.stacktraceToString(e));
+        return ResponseEntity.buildByMsg(errorMsg, 199);
     }
 
     @ExceptionHandler(IdempotentException.class)
-    public ResponseEntity<?> idempotentExceptionHandle(IdempotentException e){
-        StaticLog.error(e);
+    public ResponseEntity<?> idempotentExceptionHandle(IdempotentException e) {
+        StaticLog.error(ExceptionUtil.stacktraceToString(e));
         return ResponseEntity.buildByEnum(ResponseEnum.IDEMPOTENT_ERROR);
     }
 
@@ -69,5 +71,11 @@ public class BaseExceptionHandler {
     public ResponseEntity<?> missingServletRequestParameterExceptionHandle(MissingServletRequestParameterException e) {
         StaticLog.error(ExceptionUtil.stacktraceToString(e));
         return ResponseEntity.buildByEnum(ResponseEnum.NO_PARAM);
+    }
+
+    @ExceptionHandler(MybatisPlusException.class)
+    public ResponseEntity<?> mybatisPlusExceptionHandle(MybatisPlusException e) {
+        StaticLog.error(ExceptionUtil.stacktraceToString(e));
+        return ResponseEntity.buildByMsg(e.getMessage(), 199);
     }
 }

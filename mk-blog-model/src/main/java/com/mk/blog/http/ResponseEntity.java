@@ -1,6 +1,7 @@
 package com.mk.blog.http;
 
 import com.mk.blog.enums.ResponseEnum;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Getter;
 
 /**
@@ -8,10 +9,14 @@ import lombok.Getter;
  **/
 @Getter
 public class ResponseEntity<T> {
+
+    @Schema(description = "状态码")
     private final Integer code;
 
+    @Schema(description = "消息")
     private final String msg;
 
+    @Schema(description = "响应数据")
     private T data;
 
 
@@ -38,7 +43,6 @@ public class ResponseEntity<T> {
     public static <V> ResponseEntity<V> buildError() {
         return new ResponseEntity<>(ResponseEnum.UNKNOWN_ERROR);
     }
-
 
     public static <V> ResponseEntity<V> buildData(V data) {
         return new ResponseEntity<>(data);

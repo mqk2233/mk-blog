@@ -2,62 +2,64 @@
   <div>
     <div id="form">
       <Card title="MK BLOG">
-        <Form :model="loginForm" :rules="loginRule" ref="loginForm">
-          <FormItem prop="username">
-            <label>
-              <Input
-                clearable
-                placeholder="用户名"
-                type="text"
-                v-model="loginForm.username"
-              >
-                <Icon slot="prepend" type="ios-person-outline" />
-              </Input>
-            </label>
-          </FormItem>
-          <FormItem prop="password">
-            <label>
-              <Input
-                clearable
-                placeholder="密码"
-                type="password"
-                v-model="loginForm.password"
-              >
-                <Icon slot="prepend" type="ios-lock-outline" />
-              </Input>
-            </label>
-          </FormItem>
-          <FormItem prop="verifyCode">
-            <Row>
-              <i-col span="17">
-                <i-input
-                  :maxlength="4"
-                  clearable
-                  placeholder="验证码"
-                  type="text"
-                  v-model="loginForm.verifyCode"
-                />
-              </i-col>
-              <i-col span="7">
-                <img
-                  :src="loginForm.verifyCodeImg"
-                  @click="changeCodeImg()"
-                  alt="更换验证码"
-                  title="点击更换验证码"
-                />
-              </i-col>
-            </Row>
-          </FormItem>
-          <FormItem>
-            <Button
-              @click="doLogin"
-              @keyup.enter.native="doLogin()"
-              long
-              type="primary"
+        <div @keypress.enter="doLogin">
+          <Form :model="loginForm" :rules="loginRule" ref="loginForm" >
+            <FormItem prop="username">
+              <label>
+                <Input
+                    clearable
+                    placeholder="用户名"
+                    type="text"
+                    v-model="loginForm.username"
+                >
+                  <Icon slot="prepend" type="ios-person-outline" />
+                </Input>
+              </label>
+            </FormItem>
+            <FormItem prop="password">
+              <label>
+                <Input
+                    clearable
+                    placeholder="密码"
+                    type="password"
+                    v-model="loginForm.password"
+                >
+                  <Icon slot="prepend" type="ios-lock-outline" />
+                </Input>
+              </label>
+            </FormItem>
+            <FormItem prop="verifyCode">
+              <Row>
+                <i-col span="17">
+                  <i-input
+                      :maxlength="4"
+                      clearable
+                      placeholder="验证码"
+                      type="text"
+                      v-model="loginForm.verifyCode"
+                  />
+                </i-col>
+                <i-col span="7">
+                  <img
+                      :src="loginForm.verifyCodeImg"
+                      @click="changeCodeImg()"
+                      alt="更换验证码"
+                      title="点击更换验证码"
+                  />
+                </i-col>
+              </Row>
+            </FormItem>
+            <FormItem>
+              <Button
+                  @click="doLogin"
+                  @keyup.enter.native="doLogin()"
+                  long
+                  type="primary"
               >登 录</Button
-            >
-          </FormItem>
-        </Form>
+              >
+            </FormItem>
+          </Form>
+        </div>
       </Card>
     </div>
     <app-footer />
@@ -72,8 +74,9 @@
 import Footer from "../components/Footer.vue";
 import Live from "../components/Live2d.vue";
 import vueCanvasNest from "vue-canvas-nest";
-import { LOGIN } from "../mutation/mutation-types";
+import { LOGIN } from "@/mutation/mutation-types";
 import { Notice } from "view-design";
+import store from "@/store";
 
 export default {
   name: "login",
@@ -83,7 +86,7 @@ export default {
         username: "",
         password: "",
         verifyCode: "",
-        verifyCodeImg: "/api/user/getverificationcode"
+        verifyCodeImg: "/api/user/get-verification-code"
       },
       loginRule: {
         username: [
@@ -105,23 +108,25 @@ export default {
       const data = {
         userName: this.loginForm.username,
         passWord: this.loginForm.password,
-        vrifyCode: this.loginForm.verifyCode
+        verificationCode: this.loginForm.verifyCode
       };
       this.$api.user
         .login(data)
         .then(res => {
+          console.log(this);
           this.$store.commit(LOGIN, res.data.data);
           Notice.success({ title: "登录成功" });
-          this.$router.replace({ name: "main" });
+          this.$router.push({ name: "main" });
         })
         .catch(err => {
+          console.log(err);
           Notice.warning({ title: err.data.msg });
         });
     },
     changeCodeImg: function() {
       this.loginForm.verifyCode = "";
       let num = Math.ceil(Math.random() * 10); //生成一个随机数（防止缓存）
-      this.loginForm.verifyCodeImg = "/api/user/getverificationcode?" + num;
+      this.loginForm.verifyCodeImg = "/api/user/get-verification-code?" + num;
     }
   },
   components: {

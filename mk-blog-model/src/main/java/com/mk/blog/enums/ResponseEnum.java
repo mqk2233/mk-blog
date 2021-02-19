@@ -23,7 +23,7 @@ public enum ResponseEnum {
 
     NOT_LOGGED(401, "未登录，请先登录"),
     ILLEGAL_REQUESTS(403, "非法请求"), VRIFY_CODE_INCORRECT(418, "验证码不正确"),
-    USER_INCORRECT(419, "用户名或密码不正确"), VRIFY_CODE_INVALID(420, "验证码已失效");
+    USER_INCORRECT(419, "用户名或密码不正确"), VRIFY_CODE_INVALID(420, "验证码已失效，请重新获取");
 
     private final Integer code;
 

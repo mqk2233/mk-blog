@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -20,6 +21,7 @@ import javax.annotation.Resource;
  * @date 2020-12-24 01:46:10
  */
 @Configuration
+@EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Resource
@@ -34,12 +36,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        http.headers().frameOptions().disable();
         // 允许所有接口访问
         http.authorizeRequests().anyRequest().permitAll();
         // 允许跨越
         http.cors();
         // 禁用csrf攻击防护机制
-        http.csrf().disable().httpBasic();
+        http.csrf().disable();
         // 关闭session
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         // 添加jwt认证拦截器

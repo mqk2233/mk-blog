@@ -1,7 +1,7 @@
 package com.mk.blog.filter;
 
 import cn.hutool.core.util.StrUtil;
-import com.mk.blog.enums.ConstantEnum;
+import com.mk.blog.constants.SystemConstant;
 import com.mk.blog.utils.JwtUtil;
 import org.springframework.lang.NonNull;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -32,7 +32,7 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
 
     @Override
     protected void doFilterInternal(HttpServletRequest httpServletRequest, @NonNull HttpServletResponse httpServletResponse, @NonNull FilterChain filterChain) throws ServletException, IOException {
-        String authHeader = httpServletRequest.getHeader(ConstantEnum.TOKEN.getName());
+        String authHeader = httpServletRequest.getHeader(SystemConstant.TOKEN);
         if (StrUtil.isNotBlank(authHeader)) {
             String username = JwtUtil.getUsername(authHeader);
             if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
@@ -40,8 +40,7 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
                 if (JwtUtil.verify(authHeader, userDetails.getUsername(), userDetails.getPassword())) {
                     UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(
                             userDetails, null, userDetails.getAuthorities());
-                    authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(
-                            httpServletRequest));
+                    authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(httpServletRequest));
                     SecurityContextHolder.getContext().setAuthentication(authentication);
                 }
             }

@@ -14,8 +14,8 @@ import lombok.NoArgsConstructor;
 #end
 
 /**
- * @describe $!{table.comment}实体类
  * @author ${author}
+ * @describe $!{table.comment}实体类
  * @date ${cfg.dateTime}
  */
 #if(${entityLombokModel})

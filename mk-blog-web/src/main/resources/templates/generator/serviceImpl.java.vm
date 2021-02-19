@@ -7,8 +7,8 @@ import ${superServiceImplClassPackage};
 import org.springframework.stereotype.Service;
 
 /**
- * @describe $!{table.comment}服务实现类
  * @author ${author}
+ * @describe $!{table.comment}服务实现类
  * @date ${cfg.dateTime}
  */
 @Service

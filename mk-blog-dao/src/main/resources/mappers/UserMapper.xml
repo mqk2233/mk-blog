@@ -9,12 +9,12 @@
     <result column="pass_word" property="passWord" />
     <result column="remarks" property="remarks" />
     <result column="img_head" property="imgHead" />
-    <result column="is_prohibit" property="isProhibit" />
+    <result column="create_time" property="createTime" />
     <result column="modify_time" property="modifyTime" />
-    <result column="caeate_time" property="caeateTime" />
+    <result column="is_deleted" property="isDeleted" />
   </resultMap>
   <!-- 通用查询结果列 -->
   <sql id="Base_Column_List">
-  id, user_name, pass_word, remarks, img_head, is_prohibit, modify_time, caeate_time
+  id, user_name, pass_word, remarks, img_head, create_time, modify_time, is_deleted
   </sql>
 </mapper>

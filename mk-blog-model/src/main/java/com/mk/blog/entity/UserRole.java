@@ -1,21 +1,17 @@
 package com.mk.blog.entity;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import java.time.LocalDateTime;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.FieldFill;
-import com.baomidou.mybatisplus.annotation.TableLogic;
-import com.baomidou.mybatisplus.annotation.TableField;
-import java.io.Serializable;
 import com.baomidou.mybatisplus.annotation.*;
 import io.swagger.v3.oas.annotations.media.Schema;
-import lombok.Data;
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
+import java.time.LocalDateTime;
+
 /**
- * @describe 用户角色中间表实体类
  * @author MK
+ * @describe 用户角色中间表实体类
  * @date 2021-01-29 14:46:35
  */
 @Data
@@ -23,13 +19,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @TableName("user_role")
 @Schema(title = "UserRole对象", description = "用户角色中间表")
-public class UserRole implements Serializable{
+public class UserRole implements Serializable {
 
-private static final long serialVersionUID=1L;
+    private static final long serialVersionUID = 1L;
 
     @Schema(description = "唯一标识")
     @TableId(value = "id", type = IdType.ASSIGN_ID)
-        private Long id;
+    private Long id;
 
     @Schema(description = "用户id")
     @TableField("user_id")

@@ -1,21 +1,18 @@
 package com.mk.blog.entity;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 /**
  * @author MK
- * @date 2021-01-10 20:13:02
  * @describe 用户表实体类
+ * @date 2021-01-30 17:11:19
  */
 @Data
 @AllArgsConstructor
@@ -27,7 +24,7 @@ public class User implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Schema(description = "唯一标识")
-    @TableId(value = "id", type = IdType.ASSIGN_UUID)
+    @TableId(value = "id", type = IdType.ASSIGN_ID)
     private Long id;
 
     @Schema(description = "用户名")
@@ -46,17 +43,18 @@ public class User implements Serializable {
     @TableField("img_head")
     private String imgHead;
 
-    @Schema(description = "是否启用")
-    @TableField("is_prohibit")
-    private Integer isProhibit;
+    @Schema(description = "创建时间")
+    @TableField(fill = FieldFill.INSERT)
+    private LocalDateTime createTime;
 
     @Schema(description = "更新时间")
-    @TableField("modify_time")
-    private Date modifyTime;
+    @TableField(fill = FieldFill.INSERT_UPDATE)
+    private LocalDateTime modifyTime;
 
-    @Schema(description = "创建时间")
-    @TableField("caeate_time")
-    private Date caeateTime;
+    @Schema(description = "是否删除(0-未删除， 1-删除)")
+    @TableField("is_deleted")
+    @TableLogic
+    private Integer isDeleted;
 
 
 }

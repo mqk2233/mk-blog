@@ -4,7 +4,7 @@
  */
 import axios from "axios";
 import router from "../router";
-import { Notice } from "iview";
+import { Notice } from "view-design";
 
 /**
  * 提示函数

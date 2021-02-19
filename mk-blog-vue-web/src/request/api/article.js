@@ -32,13 +32,10 @@ const article = {
    * @returns {Promise<AxiosResponse<T>>}
    */
   articleAdminList(title, pageSize, pageNum) {
-    return axios.get(`api/article/getarticleadminlist`, {
-      params: {
-        title: title,
-        pageSize: pageSize,
-        pageNum: pageNum
-      }
-    });
+    if (title !== null && title !== '') {
+      title = "/" + title
+    }
+    return axios.get(`api/article/authorization/get-article-list${title}/${pageNum}/${pageSize}`);
   },
 
   /**

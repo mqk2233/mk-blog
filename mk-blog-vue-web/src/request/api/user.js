@@ -69,7 +69,7 @@ const user = {
    * @returns
    */
   getCurrentUser() {
-    return axios.get(`api/user/getcurrentuser`);
+    return axios.get(`api/user/authorization/get-current-user`);
   },
 
   /**
@@ -79,9 +79,7 @@ const user = {
    * @returns
    */
   login(params) {
-    return axios.post(`api/user/dologin`, qs.stringify(params), {
-      headers: { "Content-Type": "application/x-www-form-urlencoded" }
-    });
+    return axios.post(`api/user/do-login`, qs.parse(params));
   }
 };
 

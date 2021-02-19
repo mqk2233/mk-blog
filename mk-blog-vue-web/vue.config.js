@@ -7,7 +7,7 @@ module.exports = {
         open: true, //打开浏览器
         proxy: {
             "/api": {
-                target: "http://localhost:8080/mk-blog", //host
+                target: "http://localhost:8080/blog", //host
                 ws: true, //是否代理
                 changeOrigin: true, //是否跨域
                 pathRewrite: {

@@ -57,7 +57,7 @@ export default {
   mounted() {
     setInterval(() => {
       fetch(
-        "https://api.imjad.cn/hitokoto/?cat=&charset=utf-8&length=28&encode=json"
+        "https://api.vvhan.com/api/reping"
       )
         .then(res => res.json())
         .then(data => {
@@ -65,17 +65,17 @@ export default {
             let tool = this.$refs.tool.filter(item => {
               return item.customDialogue;
             });
-            if (tool && tool.length > 0) tool[0].showMessage(data.hitokoto);
+            if (tool && tool.length > 0) tool[0].showMessage(data.data.content);
           } else {
-            this.$refs.dialogue.showMessage(data.hitokoto);
+            this.$refs.dialogue.showMessage(data.data.content);
           }
         });
     }, 10000);
     this.modelPath =
-      "/api/model/packages/live2d-widget-model-unitychan/assets/unitychan.model.json";
+      "/api/static/packages/live2d-widget-model-unitychan/assets/unitychan.model.json";
     setTimeout(() => {
       this.modelPaths =
-        "/api/model/packages/live2d-widget-model-unitychan/assets/unitychan.model.json";
+        "/api/static/packages/live2d-widget-model-unitychan/assets/unitychan.model.json";
     }, 2000000);
   },
   methods: {
