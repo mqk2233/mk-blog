@@ -1,13 +1,39 @@
 package com.mk.blog;
 
-import com.mk.blog.entity.Label;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.mk.blog.entity.Label;
+import com.mk.blog.vo.LabelVo;
 
 /**
- * @describe 标签表服务类
  * @author MK
- * @date 2021-01-29 14:45:23
+ * @describe 标签表服务类
  */
 public interface ILabelService extends IService<Label> {
 
+    /**
+     * 新增标签
+     *
+     * @param vo 标签vo
+     * @return {@link int }
+     * @author MK
+     */
+    boolean addLabel(LabelVo vo);
+
+    /**
+     * 编辑标签
+     *
+     * @param vo 标签vo
+     * @return {@link int }
+     * @author MK
+     */
+    boolean editLabel(LabelVo vo);
+
+    /**
+     * 删除标签
+     *
+     * @param id 标签id
+     * @return {@link int }
+     * @author MK
+     */
+    boolean delLabel(Long id);
 }

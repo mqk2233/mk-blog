@@ -10,7 +10,6 @@ import java.util.List;
 
 /**
  * @author MK
- * @date 2021/2/19
  */
 @Mapper
 public interface ArticleListConverter {
@@ -23,7 +22,15 @@ public interface ArticleListConverter {
      * @param source 文章集合
      * @return {@link List<ArticleVo> }
      * @author MK
-     * @date 2021/2/19 10:44
      */
     List<ArticleListVo> toConvertVO(List<Article> source);
+
+    /**
+     * 文章转Vo
+     *
+     * @param source 文章
+     * @return {@link ArticleVo }
+     * @author MK
+     */
+    ArticleListVo toConvertVO(Article source);
 }

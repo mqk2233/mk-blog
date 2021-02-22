@@ -10,7 +10,6 @@ import java.io.Serializable;
 
 /**
  * @author MK
- * @date 2021/2/7
  */
 @Data
 public class LoginVo implements Serializable {

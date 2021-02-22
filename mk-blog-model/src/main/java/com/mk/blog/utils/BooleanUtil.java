@@ -8,7 +8,6 @@ import java.util.function.Supplier;
 /**
  * @author MK
  * @describe 用于判断的工具类减少if
- * @date 2021/2/18
  */
 public class BooleanUtil {
 
@@ -19,7 +18,6 @@ public class BooleanUtil {
      * @param val2              值2
      * @param exceptionSupplier 异常
      * @author MK
-     * @date 2021/2/18 14:42
      */
     public static <X extends Throwable> void strNotEqualsThrow(String val1, String val2, Supplier<? extends X> exceptionSupplier) throws X {
         if (!StrUtil.equals(val1, val2)) {
@@ -33,7 +31,6 @@ public class BooleanUtil {
      * @param exceptionSupplier 异常
      * @param val               字符串数组
      * @author MK
-     * @date 2021/2/18 14:49
      */
     public static <X extends Throwable> void strAnyIsBlankThrow(Supplier<? extends X> exceptionSupplier, String... val) throws X {
         if (Arrays.stream(val).anyMatch(StrUtil::isBlank)) {
@@ -47,7 +44,6 @@ public class BooleanUtil {
      * @param val               boolean
      * @param exceptionSupplier 异常
      * @author MK
-     * @date 2021/2/18 17:34
      */
     public static <X extends Throwable> void falseThrow(boolean val, Supplier<? extends X> exceptionSupplier) throws X {
         if (!val) {

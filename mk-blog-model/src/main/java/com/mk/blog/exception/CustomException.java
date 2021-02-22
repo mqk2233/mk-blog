@@ -5,7 +5,7 @@ import com.mk.blog.enums.ResponseEnum;
 
 /**
  * @author MK
- * 自定义异常
+ * @describe 自定义异常
  **/
 public class CustomException extends RuntimeException {
     private static final long serialVersionUID = 194906846739586856L;

@@ -1,30 +1,30 @@
 <template>
   <div>
     <Background
-      time="1.5"
-      height="70"
-      url="https://i.loli.net/2020/02/02/ji3LWXYzlGacmMO.jpg"
+        time="1.5"
+        height="70"
+        url="https://i.loli.net/2020/02/02/ji3LWXYzlGacmMO.jpg"
     />
     <div class="a-bounceinB">
-      <h1 class="title">{{ articleEdit.title }}</h1>
       <mavon-editor
-        class="card"
-        :value="articleEdit.contentMd"
-        :subfield="prop.subfield"
-        :defaultOpen="prop.defaultOpen"
-        :toolbarsFlag="prop.toolbarsFlag"
-        :editable="prop.editable"
-        :scrollStyle="prop.scrollStyle"
+          class="card"
+          :value="articleEdit.contentMd"
+          :subfield="prop.subfield"
+          :defaultOpen="prop.defaultOpen"
+          :toolbarsFlag="prop.toolbarsFlag"
+          :editable="prop.editable"
+          :scrollStyle="prop.scrollStyle"
       />
     </div>
-    <div ref="toc" class="catalog" v-html="articleEdit.catalog" />
-    <MyBackTop />
+    <div ref="toc" class="catalog" v-html="articleEdit.catalog"/>
+    <MyBackTop/>
   </div>
 </template>
 
 <script>
 import Background from "../Background";
 import MyBackTop from "../MyBackTop";
+
 export default {
   name: "Blog",
   data() {
@@ -47,18 +47,18 @@ export default {
   methods: {
     getArticleById() {
       this.$api.article
-        .getArticleById({ id: this.$router.currentRoute.params.id })
-        .then(res => {
-          this.articleEdit = res.data.data;
-        })
-        .catch(err => {
-          this.$Notice.warning({ title: err.data.msg });
-        });
+          .getArticleById(this.$router.currentRoute.params.id)
+          .then(res => {
+            this.articleEdit = res.data.data;
+          })
+          .catch(err => {
+            this.$Notice.warning({title: err.data.msg});
+          });
     },
     moveCatalog() {
       let scrollPosition;
       let toc = this.$refs.toc;
-      window.addEventListener("scroll", function() {
+      window.addEventListener("scroll", function () {
         scrollPosition = window.scrollY;
         if (scrollPosition > 450) {
           toc.classList.remove("catalog");
@@ -70,11 +70,11 @@ export default {
       });
     }
   },
-  mounted: function() {
+  mounted: function () {
     this.getArticleById();
     this.moveCatalog();
   },
-  components: { Background, MyBackTop },
+  components: {Background, MyBackTop},
   computed: {
     prop() {
       return {
@@ -91,17 +91,15 @@ export default {
 
 <style scoped>
 .card {
+  margin-top: 65vh;
   width: 110vh;
-  margin-top: 15px;
 }
-.title {
-  margin-top: 60vh;
-  text-align: center;
-}
+
 .catalog {
   opacity: 0;
   transition: all 0.2s ease-out;
 }
+
 .toc {
   opacity: 1;
   position: fixed;
@@ -109,9 +107,11 @@ export default {
   top: 7vh;
   transition: all 0.2s ease-out;
 }
+
 .a-bounceinB {
   animation: bounceinB 1s;
 }
+
 @keyframes bounceinB {
   0% {
     opacity: 0;

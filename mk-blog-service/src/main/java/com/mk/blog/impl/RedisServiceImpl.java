@@ -12,7 +12,7 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * @author MK
- * @date 2020/12/30
+ * @describe Redis操作类
  */
 @Service
 public class RedisServiceImpl implements IRedisService {

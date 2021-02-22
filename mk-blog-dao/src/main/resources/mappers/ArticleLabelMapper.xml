@@ -4,22 +4,25 @@
 
   <!-- 通用查询映射结果 -->
   <resultMap id="BaseResultMap" type="com.mk.blog.entity.ArticleLabel">
-    <id column="id" property="id" />
-    <result column="article_id" property="articleId" />
-    <result column="label_id" property="labelId" />
-    <result column="create_time" property="createTime" />
-    <result column="modify_time" property="modifyTime" />
-    <result column="is_deleted" property="isDeleted" />
+    <id column="id" property="id"/>
+    <result column="article_id" property="articleId"/>
+    <result column="label_id" property="labelId"/>
+    <result column="create_time" property="createTime"/>
+    <result column="modify_time" property="modifyTime"/>
+    <result column="is_deleted" property="isDeleted"/>
   </resultMap>
   <!-- 通用查询结果列 -->
   <sql id="Base_Column_List">
-  id, article_id, label_id, create_time, modify_time, is_deleted
+    id, article_id, label_id, create_time, modify_time, is_deleted
   </sql>
 
   <select id="selectLabelName" resultType="java.lang.String">
-    SELECT t2.label_name
-    FROM article_label t1
-    JOIN label t2 ON t1.label_id = t2.id
-    WHERE article_id = #{articleId}
+    SELECT
+      t2.label_name
+    FROM
+      article_label t1
+      JOIN label t2 ON t1.label_id = t2.id
+    WHERE
+      article_id = #{articleId}
   </select>
 </mapper>

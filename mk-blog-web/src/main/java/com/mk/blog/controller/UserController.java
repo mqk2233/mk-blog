@@ -28,7 +28,6 @@ import java.io.OutputStream;
 /**
  * @author MK
  * @describe 用户表前端控制器
- * @date 2021-01-30 17:11:19
  */
 @Validated
 @RestController

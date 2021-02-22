@@ -4,17 +4,17 @@
 
   <!-- 通用查询映射结果 -->
   <resultMap id="BaseResultMap" type="com.mk.blog.entity.Menu">
-    <id column="id" property="id" />
-    <result column="menu_name" property="menuName" />
-    <result column="menu_type" property="menuType" />
-    <result column="sort" property="sort" />
-    <result column="remarks" property="remarks" />
-    <result column="create_time" property="createTime" />
-    <result column="modify_time" property="modifyTime" />
-    <result column="is_deleted" property="isDeleted" />
+    <id column="id" property="id"/>
+    <result column="menu_name" property="menuName"/>
+    <result column="menu_type" property="menuType"/>
+    <result column="sort" property="sort"/>
+    <result column="remarks" property="remarks"/>
+    <result column="create_time" property="createTime"/>
+    <result column="modify_time" property="modifyTime"/>
+    <result column="is_deleted" property="isDeleted"/>
   </resultMap>
   <!-- 通用查询结果列 -->
   <sql id="Base_Column_List">
-  id, menu_name, menu_type, sort, remarks, create_time, modify_time, is_deleted
+    id, menu_name, menu_type, sort, remarks, create_time, modify_time, is_deleted
   </sql>
 </mapper>

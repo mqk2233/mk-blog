@@ -7,9 +7,8 @@ import org.springframework.stereotype.Component;
 import java.time.LocalDateTime;
 
 /**
- * @describe mybatis-plus自动注入处理类
  * @author MK
- * @date 2021/1/25
+ * @describe mybatis-plus自动注入处理类
  */
 @Component
 public class MyMetaObjectHandler implements MetaObjectHandler {

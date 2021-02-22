@@ -8,7 +8,6 @@ import java.util.List;
 
 /**
  * @author MK
- * @date 2021/2/19
  */
 @Data
 public class ArticleListVo {
@@ -35,9 +34,6 @@ public class ArticleListVo {
 
     @Schema(description = "写作时间")
     private Date createTime;
-
-    @Schema(description = "更新时间")
-    private Date modifyTime;
 
     @Schema(description = "是否启用")
     private Integer isDeleted;

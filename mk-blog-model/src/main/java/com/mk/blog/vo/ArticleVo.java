@@ -7,7 +7,6 @@ import java.util.Date;
 
 /**
  * @author MK
- * @date 2020/12/24
  */
 @Data
 public class ArticleVo {
@@ -34,11 +33,8 @@ public class ArticleVo {
     private Integer status;
 
     @Schema(description = "写作时间")
-    private Date writeTime;
-
-    @Schema(description = "更新时间")
-    private Date modifyTime;
+    private Date createTime;
 
     @Schema(description = "是否启用")
-    private Integer isProhibit;
+    private Integer isDeleted;
 }

@@ -6,13 +6,23 @@ import com.mk.blog.entity.ArticleLabel;
 import com.mk.blog.mapper.ArticleLabelMapper;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 /**
- * @describe 文章标签中间表服务实现类
  * @author MK
- * @date 2021-01-29 14:44:58
+ * @describe 文章标签中间表服务实现类
  */
 @Service
 public class ArticleLabelServiceImpl extends ServiceImpl<ArticleLabelMapper, ArticleLabel> implements IArticleLabelService {
 
 
+    @Override
+    public List<Long> LabelIdByArticleId(Long articleId) {
+        return this.lambdaQuery()
+                .eq(ArticleLabel::getArticleId, articleId)
+                .list().stream()
+                .map(ArticleLabel::getLabelId)
+                .collect(Collectors.toList());
+    }
 }

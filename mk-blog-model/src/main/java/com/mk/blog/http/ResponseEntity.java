@@ -6,6 +6,7 @@ import lombok.Getter;
 
 /**
  * @author MK
+ * @describe 请求返回对象
  **/
 @Getter
 public class ResponseEntity<T> {

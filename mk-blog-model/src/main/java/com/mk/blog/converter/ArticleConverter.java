@@ -10,7 +10,6 @@ import java.util.List;
 
 /**
  * @author MK
- * @date 2020/12/24
  */
 @Mapper
 public interface ArticleConverter {
@@ -22,7 +21,6 @@ public interface ArticleConverter {
      * @param source 要转换的类
      * @return {@link ArticleVo }
      * @author MK
-     * @date 2020/12/29 11:32
      */
     ArticleVo toConvertVO(Article source);
 
@@ -32,7 +30,6 @@ public interface ArticleConverter {
      * @param source 要转换的集合
      * @return {@link List<ArticleVo> }
      * @author MK
-     * @date 2020/12/29 11:32
      */
     List<ArticleVo> toConvertVOList(List<Article> source);
 }

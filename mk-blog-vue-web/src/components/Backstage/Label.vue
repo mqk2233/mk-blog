@@ -1,10 +1,10 @@
 <template>
   <div>
     <Card style="margin-bottom: 0.5em;">
-      <i-form :label-width="60" inline>
+      <i-form :label-width="80" inline>
         <FormItem label="标签名" style="margin: auto;">
           <label>
-            <i-input
+            <Input
                 clearable
                 placeholder="标签名"
                 v-model="searchLabelName"
@@ -13,69 +13,69 @@
         </FormItem>
         <FormItem style="float: right;">
           <Button
-            @click="openModel('', false)"
-            icon="md-create"
-            style="margin-right: 1em"
-            type="success"
-            >新增
+              @click="openModel('', false, null)"
+              icon="md-create"
+              style="margin-right: 1em"
+              type="success"
+          >新增
           </Button>
           <Button @click="getLabelList" icon="ios-search" type="info"
-            >搜索
+          >搜索
           </Button>
         </FormItem>
       </i-form>
     </Card>
     <Card>
       <Table
-        :columns="column"
-        :data="list"
-        :loading="loading"
-        border
-        no-data-text="没有数据呀 ( ๑ŏ ﹏ ŏ๑ )"
-        stripe
-        tooltip
+          :columns="column"
+          :data="list"
+          :loading="loading"
+          no-data-text="没有数据呀 ( ๑ŏ ﹏ ŏ๑ )"
+          stripe
+          tooltip
       >
         <template slot="name" slot-scope="{ row }">
           <strong>{{ row.name }}</strong>
         </template>
         <template slot="action" slot-scope="{ row }">
           <Button
-            @click="openModel(row.id, true)"
-            size="small"
-            style="margin-right: 5px"
-            type="info"
-            >编辑
+              @click="openModel(row.id, true, row)"
+              size="small"
+              style="margin-right: 5px"
+              ghost
+              type="info"
+          >编辑
           </Button>
-          <Button @click="doDelLabel(row.id)" size="small" type="error"
-            >删除
+          <Button @click="doDelLabel(row.id)" size="small" ghost type="error"
+          >删除
           </Button>
         </template>
       </Table>
       <template>
         <Modal
-          :loading="true"
-          :title="editLabelTitle"
-          @on-ok="doEditLabel('labelEdit')"
-          true
-          v-model="isEditLabel"
+            :loading="true"
+            :title="editLabelTitle"
+            @on-ok="doEditLabel('labelEdit')"
+            true
+            v-model="isEditLabel"
         >
           <Form :model="labelEdit" :rules="ruleCustom" ref="labelEdit">
             <FormItem label="标签名" prop="labelName">
               <label>
-                <Input placeholder="标签名" v-model="labelEdit.labelName" />
+                <Input placeholder="标签名" v-model="labelEdit.labelName"/>
               </label>
             </FormItem>
             <FormItem label="排序标识" prop="sort">
               <label>
-                <InputNumber placeholder="排序标识" v-model="labelEdit.sort" />
+                <InputNumber placeholder="排序标识" v-model="labelEdit.sort"/>
               </label>
             </FormItem>
             <FormItem label="是否启用">
               <i-switch
-                :false-value="0"
-                size="large"
-                :true-value="1"
-                v-model="labelEdit.prohibit"
+                  :false-value="1"
+                  size="large"
+                  :true-value="0"
+                  v-model="labelEdit.isDeleted"
               >
                 <span slot="open">启用</span>
                 <span slot="close">禁用</span>
@@ -86,15 +86,15 @@
       </template>
     </Card>
     <Page
-      :current="currentPage"
-      :page-size="pageSize"
-      :total="total"
-      @on-change="pagechange"
-      @on-page-size-change="pageSizeChange"
-      show-sizer
-      show-total
-      style="float: right; margin-top: 1em;"
-      transfer
+        :current="currentPage"
+        :page-size="pageSize"
+        :total="total"
+        @on-change="pageChange"
+        @on-page-size-change="pageSizeChange"
+        show-sizer
+        show-total
+        style="float: right; margin-top: 1em;"
+        transfer
     />
   </div>
 </template>
@@ -137,16 +137,16 @@ export default {
         {
           align: "center",
           title: "是否启用",
-          key: "prohibit",
+          key: "isDeleted",
           render: (h, params) => {
             return h(
-              "Tag",
-              {
-                props: {
-                  color: params.row.prohibit === 1 ? "success" : "error"
-                }
-              },
-              params.row.prohibit === 1 ? "是" : "否"
+                "Tag",
+                {
+                  props: {
+                    color: params.row.isDeleted === 0 ? "green" : "red"
+                  }
+                },
+                params.row.isDeleted === 0 ? "是" : "否"
             );
           }
         },
@@ -162,11 +162,11 @@ export default {
         id: 0,
         labelName: "",
         sort: 0,
-        prohibit: 1
+        isDeleted: 0
       },
       ruleCustom: {
         labelName: [
-          { required: true, message: "标签名不能为空", trigger: "blur" },
+          {required: true, message: "标签名不能为空", trigger: "blur"},
           {
             pattern: /.{2,6}/,
             message: "请输入2-6位字符",
@@ -178,39 +178,32 @@ export default {
   },
   methods: {
     // 标签列表
-    getLabelList: function() {
+    getLabelList() {
       this.$api.label
-        .labelList(this.searchLabelName, this.pageSize, this.currentPage)
-        .then(res => {
-          this.list = res.data.data;
-          this.total = res.data.total;
-          this.loading = false;
-        })
-        .catch(err => {
-          this.$Notice.warning({ title: err.data.msg });
-        });
+          .labelPageList(this.searchLabelName, this.pageSize, this.currentPage)
+          .then(res => {
+            this.list = res.data.data;
+            this.total = parseInt(res.data.total);
+            this.loading = false;
+          })
+          .catch(err => {
+            this.$Notice.warning({title: err.data.msg});
+          });
     },
     // 打开对话框
-    openModel(id, flag) {
+    openModel(id, flag, data) {
       this.isEditLabel = true;
       if (flag) {
         this.editLabelTitle = "编辑标签";
         this.editLabelFlag = true;
-        this.$api.label
-          .getLabelById({ id: id })
-          .then(res => {
-            this.labelEdit = res.data.data;
-          })
-          .catch(err => {
-            this.$Notice.warning({ title: err.data.msg });
-          });
+        this.labelEdit = data;
       } else {
+        this.editLabelTitle = "新增标签";
         this.editLabelFlag = false;
         this.labelEdit.id = "";
         this.labelEdit.labelName = "";
         this.labelEdit.passWord = "";
         this.labelEdit.remarks = "";
-        this.editLabelTitle = "新增标签";
       }
     },
     // 编辑标签
@@ -220,44 +213,46 @@ export default {
           const param = this.labelEdit;
           if (this.editLabelFlag) {
             this.$api.label
-              .doEditLabel(param)
-              .then(res => {
-                this.$Notice.success({ title: res.data.msg });
-                this.getLabelList();
-              })
-              .catch(err => {
-                this.$Notice.warning({ title: err.data.msg });
-              });
+                .doEditLabel(param)
+                .then(res => {
+                  this.$Notice.success({title: res.data.msg});
+                  this.getLabelList();
+                })
+                .catch(err => {
+                  this.$Notice.warning({title: err.data.msg});
+                });
+            this.isEditLabel = false;
           } else {
             this.$api.label
-              .doAddLabel(param)
-              .then(res => {
-                this.$Notice.success({ title: res.data.msg });
-                this.getLabelList();
-              })
-              .catch(err => {
-                this.$Notice.warning({ title: err.data.msg });
-              });
+                .doAddLabel(param)
+                .then(res => {
+                  this.$Notice.success({title: res.data.msg});
+                  this.getLabelList();
+                })
+                .catch(err => {
+                  this.$Notice.warning({title: err.data.msg});
+                });
+            this.isEditLabel = false;
           }
         } else {
-          this.$Notice.warning({ title: "操作失败" });
+          this.$Notice.warning({title: "操作失败"});
         }
       });
     },
     // 删除标签
     doDelLabel(id) {
       this.$api.label
-        .doDelLabel({ id: id })
-        .then(res => {
-          this.$Notice.success({ title: res.data.msg });
-          this.getLabelList();
-        })
-        .catch(err => {
-          this.$Notice.warning({ title: err.data.msg });
-        });
+          .doDelLabel(id)
+          .then(res => {
+            this.$Notice.success({title: res.data.msg});
+            this.getLabelList();
+          })
+          .catch(err => {
+            this.$Notice.warning({title: err.data.msg});
+          });
     },
     //改变页码
-    pagechange(index) {
+    pageChange(index) {
       this.currentPage = index;
       this.getLabelList();
     },
@@ -267,7 +262,7 @@ export default {
       this.getLabelList();
     }
   },
-  created: function() {
+  created: function () {
     this.getLabelList();
   }
 };

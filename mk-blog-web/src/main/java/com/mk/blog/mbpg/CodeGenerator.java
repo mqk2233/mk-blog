@@ -16,10 +16,9 @@ import com.sun.javafx.PlatformUtil;
 import java.util.*;
 
 /**
- * @describe mybatis-plus-generator代码生成
  * @author MK
- * @date 2020/12/21
  * see https://www.cnblogs.com/miaoying/p/12625920.html & https://baomidou.com/guide/generator.html
+ * @describe mybatis-plus-generator代码生成
  */
 public class CodeGenerator {
 
@@ -81,7 +80,6 @@ public class CodeGenerator {
      *
      * @return {@link InjectionConfig }
      * @author MK
-     * @date 2020/12/23 15:40
      */
     private static InjectionConfig getInjectionConfig() {
         return new InjectionConfig() {
@@ -110,7 +108,6 @@ public class CodeGenerator {
      * @param tableName 表名
      * @return {@link StrategyConfig }
      * @author MK
-     * @date 2020/12/23 15:39
      */
     private static StrategyConfig getStrategyConfig(String tableName) {
         return new StrategyConfig()
@@ -130,7 +127,6 @@ public class CodeGenerator {
      *
      * @return {@link PackageConfig }
      * @author MK
-     * @date 2020/12/23 15:39
      */
     private static PackageConfig getPackageConfig() {
         Map<String, String> pathInfo = new HashMap<>(5);
@@ -154,7 +150,6 @@ public class CodeGenerator {
      *
      * @return {@link DataSourceConfig }
      * @author MK
-     * @date 2020/12/23 15:38
      */
     private static DataSourceConfig getDataSourceConfig() {
         return new DataSourceConfig()
@@ -169,7 +164,6 @@ public class CodeGenerator {
      *
      * @return {@link GlobalConfig }
      * @author MK
-     * @date 2020/12/23 15:41
      */
     private static GlobalConfig getGlobalConfig() {
         String projectPath = System.getProperty("user.dir");
@@ -196,7 +190,6 @@ public class CodeGenerator {
      *
      * @return {@link TemplateConfig }
      * @author MK
-     * @date 2020/12/23 15:42
      */
     private static TemplateConfig getTemplateConfig() {
         return new TemplateConfig()

@@ -15,9 +15,8 @@ import java.lang.reflect.Method;
 import java.util.Objects;
 
 /**
- * 系统日志切面
  * @author MK
- * @date 2021-01-10 20:31:05
+ * @describe 系统日志切面
  **/
 @Aspect
 @Component

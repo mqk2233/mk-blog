@@ -13,7 +13,6 @@ import java.time.LocalDateTime;
 /**
  * @author MK
  * @describe 文章表实体类
- * @date 2021-01-29 14:44:28
  */
 @Data
 @AllArgsConstructor

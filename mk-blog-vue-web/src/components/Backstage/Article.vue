@@ -1,76 +1,99 @@
 <template>
   <div>
     <Card style="margin-bottom: 0.5em;">
-      <i-form :label-width="60" inline>
+      <i-form :label-width="80" inline>
         <FormItem label="文章标题" style="margin: auto;">
           <label>
             <Input
-              clearable
-              placeholder="文章标题"
-              v-model="searchArticleName"
+                clearable
+                placeholder="文章标题"
+                v-model="searchArticleName"
             />
+          </label>
+        </FormItem>
+        <FormItem label="是否删除" style="margin: auto;">
+          <label>
+            <Select v-model="isDeleted" clearable style="width:200px">
+              <Option v-model="isDeleted">是</Option>
+              <Option v-model="isDeleted">否</Option>
+            </Select>
           </label>
         </FormItem>
         <FormItem style="float: right;">
           <Button
-            icon="md-create"
-            style="margin-right: 1em"
-            type="success"
-            @click="toAddArticle()"
-            >新增
+              icon="md-create"
+              style="margin-right: 1em"
+              type="success"
+              @click="toAddArticle()"
+          >新增
           </Button>
           <Button @click="getArticleList" icon="ios-search" type="info"
-            >搜索
+          >搜索
           </Button>
         </FormItem>
       </i-form>
     </Card>
     <Card>
       <Table
-        :columns="column"
-        :data="list"
-        :loading="loading"
-        no-data-text="没有数据呀 ( ๑ŏ ﹏ ŏ๑ )"
-        stripe
-        tooltip
+          :columns="column"
+          :data="list"
+          :loading="loading"
+          no-data-text="没有数据呀 ( ๑ŏ ﹏ ŏ๑ )"
+          stripe
+          tooltip
       >
         <template slot="name" slot-scope="{ row }">
           <strong>{{ row.name }}</strong>
         </template>
         <template slot="action" slot-scope="{ row }">
           <Button
-            v-show="row.status === 0"
-            @click="doReleaseArticle(row.id)"
-            size="small"
-            style="margin-right: 5px"
-            type="success"
-            ghost
-            >发布
+              @click="doReleaseArticle(row.id)"
+              size="small"
+              style="margin-right: 5px"
+              type="success"
+              ghost
+              v-show="row.status === 0 && row.isDeleted === 0"
+          >发布
           </Button>
           <Button
-            @click="toEditArticle(row.id)"
-            size="small"
-            style="margin-right: 5px"
-            type="info"
-            ghost
-            >编辑
+              @click="$router.push({ name: 'addArticle', params: { id: row.id } })"
+              size="small"
+              style="margin-right: 5px"
+              type="info"
+              ghost
+              v-show="row.isDeleted === 0"
+          >编辑
           </Button>
-          <Button @click="doDelArticle(row.id)" size="small" type="error" ghost
-            >删除
+          <Button
+              @click="doRecoveryArticle(row.id)"
+              size="small"
+              style="margin-right: 5px"
+              type="success"
+              ghost
+              v-show="row.isDeleted === 1"
+          >启用
+          </Button>
+          <Button
+              @click="doDelArticle(row.id)"
+              size="small"
+              type="error"
+              ghost
+              v-show="row.isDeleted === 0"
+          >删除
           </Button>
         </template>
       </Table>
     </Card>
     <Page
-      :current="currentPage"
-      :page-size="pageSize"
-      :total="total"
-      @on-change="pageChange"
-      @on-page-size-change="pageSizeChange"
-      show-sizer
-      show-total
-      style="float: right; margin-top: 1em;"
-      transfer
+        :current="currentPage"
+        :page-size="pageSize"
+        :total="total"
+        @on-change="pageChange"
+        @on-page-size-change="pageSizeChange"
+        show-sizer
+        show-total
+        style="float: right; margin-top: 1em;"
+        transfer
     />
   </div>
 </template>
@@ -86,6 +109,7 @@ export default {
       editArticleTitle: "编辑文章", //对话框标题
       searchArticleName: "", //搜索框文章名
       loading: true,
+      isDeleted: 0,
       column: [
         {
           type: "index",
@@ -109,13 +133,13 @@ export default {
           key: "status",
           render: (h, params) => {
             return h(
-              "Tag",
-              {
-                props: {
-                  color: params.row.status === 0 ? "cyan" : "green"
-                }
-              },
-              params.row.status === 0 ? "已保存" : "已发布"
+                "Tag",
+                {
+                  props: {
+                    color: params.row.status === 0 ? "cyan" : "green"
+                  }
+                },
+                params.row.status === 0 ? "已保存" : "已发布"
             );
           }
         },
@@ -125,13 +149,13 @@ export default {
           key: "isDeleted",
           render: (h, params) => {
             return h(
-              "Tag",
-              {
-                props: {
-                  color: params.row.isDeleted === 0 ? "green" : "red"
-                }
-              },
-              params.row.isDeleted === 0 ? "是" : "否"
+                "Tag",
+                {
+                  props: {
+                    color: params.row.isDeleted === 0 ? "green" : "red"
+                  }
+                },
+                params.row.isDeleted === 0 ? "是" : "否"
             );
           }
         },
@@ -154,36 +178,37 @@ export default {
   },
   methods: {
     toAddArticle() {
-      this.$router.replace({ name: "addArticle" });
+      this.$router.replace({name: "addArticle"});
     },
     // 文章列表
     getArticleList() {
       this.$api.article
-        .articleAdminList(
-          this.searchArticleName,
-          this.pageSize,
-          this.currentPage
-        )
-        .then(res => {
-          this.list = res.data.data;
-          this.total = res.data.total;
-          this.loading = false;
-        })
-        .catch(err => {
-          this.$Notice.warning({ title: err.data.msg });
-        });
+          .articleAdminList(
+              this.searchArticleName,
+              this.isDeleted,
+              this.pageSize,
+              this.currentPage
+          )
+          .then(res => {
+            this.list = res.data.data;
+            this.total = parseInt(res.data.total);
+            this.loading = false;
+          })
+          .catch(err => {
+            this.$Notice.warning({title: err.data.msg});
+          });
     },
     // 删除文章
     doDelArticle(id) {
       this.$api.article
-        .doDelArticle({ id: id })
-        .then(res => {
-          this.$Notice.success({ title: res.data.msg });
-          this.getArticleList();
-        })
-        .catch(err => {
-          this.$Notice.warning({ title: err.data.msg });
-        });
+          .doDelArticle(id)
+          .then(res => {
+            this.$Notice.success({title: res.data.msg});
+            this.getArticleList();
+          })
+          .catch(err => {
+            this.$Notice.warning({title: err.data.msg});
+          });
     },
     // 改变页码
     pageChange(index) {
@@ -195,24 +220,33 @@ export default {
       this.pageSize = size;
       this.getArticleList();
     },
-    // 跳转编辑界面
-    toEditArticle(id) {
-      this.$router.replace({ name: "addArticle", params: { id: id } });
-    },
     // 发布文章
     doReleaseArticle(id) {
       this.$api.article
-        .doReleaseArticle({ id: id })
-        .then(res => {
-          this.$Notice.success({ title: res.data.msg });
-          this.getArticleList();
-        })
-        .catch(err => {
-          this.$Notice.warning({ title: err.data.msg });
-        });
+          .doReleaseArticle(id)
+          .then(res => {
+            this.$Notice.success({title: res.data.msg});
+            this.getArticleList();
+          })
+          .catch(err => {
+            this.$Notice.warning({title: err.data.msg});
+          });
+    },
+    // 恢复文章
+    doRecoveryArticle(id) {
+      this.$api.article
+          .doReleaseArticle(id)
+          .then(res => {
+            this.$Notice.success({title: res.data.msg});
+            this.getArticleList();
+          })
+          .catch(err => {
+            this.$Notice.warning({title: err.data.msg});
+          });
     }
+
   },
-  mounted: function() {
+  mounted: function () {
     this.getArticleList();
   }
 };

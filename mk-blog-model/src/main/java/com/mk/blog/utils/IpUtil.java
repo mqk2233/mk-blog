@@ -7,7 +7,7 @@ import java.net.InetAddress;
 
 /**
  * @author MK
- * @date 2020/12/21
+ * @describe ip工具类
  * https://blog.csdn.net/linchack/article/details/81066028
  */
 public class IpUtil {

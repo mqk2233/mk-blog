@@ -1,12 +1,11 @@
 package com.mk.blog.mapper;
 
-import com.mk.blog.entity.RoleMenu;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.mk.blog.entity.RoleMenu;
 
 /**
- * @describe 角色菜单中间表mapper类
  * @author MK
- * @date 2021-01-29 14:46:23
+ * @describe 角色菜单中间表mapper类
  */
 public interface RoleMenuMapper extends BaseMapper<RoleMenu> {
 

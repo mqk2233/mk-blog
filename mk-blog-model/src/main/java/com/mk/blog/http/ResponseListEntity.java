@@ -8,6 +8,7 @@ import java.util.List;
 
 /**
  * @author MK
+ * @describe 请求返回对象分页用
  **/
 @Data
 public class ResponseListEntity<T> {

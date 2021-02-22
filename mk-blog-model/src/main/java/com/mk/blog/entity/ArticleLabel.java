@@ -3,6 +3,7 @@ package com.mk.blog.entity;
 import com.baomidou.mybatisplus.annotation.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -12,9 +13,9 @@ import java.time.LocalDateTime;
 /**
  * @author MK
  * @describe 文章标签中间表实体类
- * @date 2021-01-29 14:44:58
  */
 @Data
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @TableName("article_label")

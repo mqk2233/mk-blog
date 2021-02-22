@@ -1,12 +1,11 @@
 package com.mk.blog.mapper;
 
-import com.mk.blog.entity.User;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.mk.blog.entity.User;
 
 /**
- * @describe 用户表mapper类
  * @author MK
- * @date 2021-01-30 17:11:19
+ * @describe 用户表mapper类
  */
 public interface UserMapper extends BaseMapper<User> {
 

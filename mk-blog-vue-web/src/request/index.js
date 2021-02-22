@@ -8,9 +8,9 @@ import category from "./api/category";
 import article from "./api/article";
 
 export default {
-  user,
-  label,
-  img,
-  category,
-  article
+    user,
+    label,
+    img,
+    category,
+    article
 };

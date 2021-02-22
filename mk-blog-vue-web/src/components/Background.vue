@@ -1,6 +1,6 @@
 <template>
   <div class="bg" ref="bg">
-    <slot name="text" />
+    <slot name="text"/>
   </div>
 </template>
 
@@ -21,9 +21,10 @@ export default {
       default: "2"
     }
   },
-  data: function() {
+  data: function () {
     return {
-      return() {}
+      return() {
+      }
     };
   },
   methods: {
@@ -33,7 +34,7 @@ export default {
       let background = new Image();
       let bgDiv = this.$refs.bg;
       background.src = this.url;
-      background.onload = function() {
+      background.onload = function () {
         bgDiv.style.backgroundImage = "url(" + background.src + ")";
         bgDiv.style.height = height + "vh";
         bgDiv.style.transitionProperty = "all";
@@ -41,7 +42,7 @@ export default {
       };
     }
   },
-  mounted: function() {
+  mounted: function () {
     this.onLoad();
   }
 };

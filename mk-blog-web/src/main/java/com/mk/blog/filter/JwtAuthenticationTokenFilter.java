@@ -20,9 +20,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * @describe jwt校验拦截器
  * @author MK
- * @date 2021-01-10 20:31:05
+ * @describe jwt校验拦截器
  */
 @Component
 public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {

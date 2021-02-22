@@ -12,7 +12,6 @@ import java.time.LocalDateTime;
 /**
  * @author MK
  * @describe 角色菜单中间表实体类
- * @date 2021-01-29 14:46:23
  */
 @Data
 @AllArgsConstructor

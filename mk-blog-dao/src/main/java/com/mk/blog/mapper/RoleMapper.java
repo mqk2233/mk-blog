@@ -6,9 +6,8 @@ import com.mk.blog.entity.Role;
 import java.util.List;
 
 /**
- * @describe 角色表mapper类
  * @author MK
- * @date 2021-01-29 14:45:44
+ * @describe 角色表mapper类
  */
 public interface RoleMapper extends BaseMapper<Role> {
 
@@ -18,7 +17,6 @@ public interface RoleMapper extends BaseMapper<Role> {
      * @param userId 用户id
      * @return {@link List<String> }
      * @author MK
-     * @date 2021/1/10 20:36
      */
     List<String> selectRoleByUserId(Long userId);
 }

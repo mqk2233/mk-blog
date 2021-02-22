@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.mk.blog.entity.Article;
 import com.mk.blog.vo.ArticleListVo;
+import com.mk.blog.vo.ArticleVo;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -12,7 +13,6 @@ import java.util.Map;
 /**
  * @author MK
  * @describe 文章表mapper类
- * @date 2021-01-29 14:44:28
  */
 public interface ArticleMapper extends BaseMapper<Article> {
 
@@ -23,7 +23,34 @@ public interface ArticleMapper extends BaseMapper<Article> {
      * @param page 分页参数
      * @return {@link List<ArticleListVo> }
      * @author MK
-     * @date 2021/2/19 10:51
      */
-    IPage<ArticleListVo> selectAll(@Param("map")Map<String, Object> map, @Param("page") IPage<ArticleListVo> page);
+    IPage<ArticleListVo> selectAll(@Param("map") Map<String, Object> map, @Param("page") IPage<ArticleListVo> page);
+
+    /**
+     * 恢复文章
+     *
+     * @param id 文章id
+     * @return {@link int }
+     * @author MK
+     */
+    int updateIsDeleted(Long id);
+
+    /**
+     * 通过月份分组文章
+     *
+     * @return {@link List<String> }
+     * @author MK
+     */
+    List<String> groupMonth();
+
+    /**
+     * 同过月份查找文章
+     *
+     * @param month 月份
+     * @return {@link List<ArticleVo> }
+     * @author MK
+     */
+    List<ArticleVo> selectByMonth(String month);
+
+
 }

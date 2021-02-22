@@ -1,6 +1,5 @@
 package com.mk.blog.impl;
 
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.mk.blog.IRedisService;
 import com.mk.blog.IUserService;
@@ -21,7 +20,6 @@ import java.util.Optional;
 /**
  * @author MK
  * @describe 用户表服务实现类
- * @date 2021-01-30 17:11:19
  */
 @Service
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IUserService {
@@ -48,9 +46,9 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
 
     @Override
     public User oneUser(String userName) {
-        LambdaQueryWrapper<User> wrapper = new LambdaQueryWrapper<>();
-        wrapper.eq(User::getUserName, userName);
-        return Optional.ofNullable(this.getOne(wrapper))
+        return Optional.ofNullable(this.lambdaQuery()
+                .eq(User::getUserName, userName)
+                .one())
                 .orElseThrow(() -> new CustomException(ResponseEnum.UNKNOWN_ERROR));
     }
 }

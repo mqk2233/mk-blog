@@ -9,11 +9,11 @@
     <div style="margin-top: 90vh;">
       <Card class="card-scale" v-for="item in list" :key="item.id">
         <p
-          slot="title"
-          @click="
+            slot="title"
+            @click="
             $router.push({ name: 'blogDetails', params: { id: item.id } })
           "
-          style="cursor: pointer"
+            style="cursor: pointer"
         >
           {{ item.title }}
         </p>
@@ -22,26 +22,26 @@
             <Tag color="blue">{{ labels }}</Tag>
           </span>
         </div>
-        <p v-html="item.text" />
-        <Divider />
+        <p v-html="item.text"/>
+        <Divider/>
         <div>
           <img
-            :src="time"
-            alt="写作时间"
-            style="width: 20px;margin-right: 5px;"
+              :src="time"
+              alt="写作时间"
+              style="width: 20px;margin-right: 5px;"
           />
-          <span style="position: absolute;">{{ item.writeTime }}</span>
+          <span style="position: absolute;">{{ item.createTime }}</span>
           <b
-            @click="
-              $router.push({ name: 'blogDetails', params: { id: item.id } })
+              @click="
+              $router.push({ path: 'blogDetails', params: { id: item.id } })
             "
-            style="cursor:pointer;position: absolute;right: 15px;text-shadow: 0 0 2px;"
-            >。。。</b
+              style="cursor:pointer;position: absolute;right: 15px;text-shadow: 0 0 2px;"
+          >。。。</b
           >
         </div>
       </Card>
-      <Page :total="total" class-name="page" />
-      <MyBackTop />
+      <Page :total="total" class-name="page"/>
+      <MyBackTop/>
     </div>
   </div>
 </template>
@@ -49,8 +49,9 @@
 import Time from "../../../src/assets/time.png";
 import Background from "../Background";
 import MyBackTop from "../MyBackTop";
+
 export default {
-  components: { Background, MyBackTop },
+  components: {Background, MyBackTop},
   data() {
     return {
       img: "",
@@ -67,18 +68,18 @@ export default {
     // 文章列表
     getArticleList() {
       this.$api.article
-        .articleList(this.searchArticleName, this.pageSize, this.currentPage)
-        .then(res => {
-          this.list = res.data.data;
-          this.total = res.data.total;
-          this.loading = false;
-        })
-        .catch(err => {
-          this.$Notice.warning({ title: err.data.msg });
-        });
+          .articleAdminList("", 0, this.pageSize, this.currentPage)
+          .then(res => {
+            this.list = res.data.data;
+            this.total = parseInt(res.data.total);
+            this.loading = false;
+          })
+          .catch(err => {
+            this.$Notice.warning({title: err.data.msg});
+          });
     }
   },
-  mounted: function() {
+  mounted: function () {
     this.getArticleList();
   }
 };
@@ -89,6 +90,7 @@ export default {
   width: 100%;
   margin-top: 30px;
 }
+
 .card-scale {
   width: 100%;
   margin-top: 30px;
@@ -110,6 +112,7 @@ h2 {
   margin-top: 5vh;
   text-align: center;
 }
+
 h2 {
   font-size: 40px;
 }

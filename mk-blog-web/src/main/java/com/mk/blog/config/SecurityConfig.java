@@ -16,9 +16,8 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import javax.annotation.Resource;
 
 /**
- * @describe Spring Security 配置类
  * @author MK
- * @date 2020-12-24 01:46:10
+ * @describe Spring Security 配置类
  */
 @Configuration
 @EnableWebSecurity

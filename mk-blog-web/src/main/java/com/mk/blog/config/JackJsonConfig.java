@@ -6,9 +6,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * @describe JackJson配置类
  * @author MK
- * @date 2021/1/25
+ * @describe JackJson配置类
  */
 @Configuration
 public class JackJsonConfig {
@@ -18,10 +17,10 @@ public class JackJsonConfig {
      *
      * @return {@link Jackson2ObjectMapperBuilderCustomizer }
      * @author MK
-     * @date 2021/1/25 1:02
      */
     @Bean
     public Jackson2ObjectMapperBuilderCustomizer jackson2ObjectMapperBuilderCustomizer() {
-        return jacksonObjectMapperBuilder -> jacksonObjectMapperBuilder.serializerByType(Long.TYPE, ToStringSerializer.instance);
+        return jacksonObjectMapperBuilder -> jacksonObjectMapperBuilder.serializerByType(Long.class, ToStringSerializer.instance)
+                .serializerByType(Long.TYPE, ToStringSerializer.instance);
     }
 }

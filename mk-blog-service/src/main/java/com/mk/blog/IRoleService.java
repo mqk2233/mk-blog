@@ -1,12 +1,11 @@
 package com.mk.blog;
 
-import com.mk.blog.entity.Role;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.mk.blog.entity.Role;
 
 /**
- * @describe 角色表服务类
  * @author MK
- * @date 2021-01-29 14:45:44
+ * @describe 角色表服务类
  */
 public interface IRoleService extends IService<Role> {
 

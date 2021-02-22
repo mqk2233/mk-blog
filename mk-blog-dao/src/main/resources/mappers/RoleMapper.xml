@@ -4,16 +4,16 @@
 
   <!-- 通用查询映射结果 -->
   <resultMap id="BaseResultMap" type="com.mk.blog.entity.Role">
-    <id column="id" property="id" />
-    <result column="role_name" property="roleName" />
-    <result column="remarks" property="remarks" />
-    <result column="create_time" property="createTime" />
-    <result column="modify_time" property="modifyTime" />
-    <result column="is_deleted" property="isDeleted" />
+    <id column="id" property="id"/>
+    <result column="role_name" property="roleName"/>
+    <result column="remarks" property="remarks"/>
+    <result column="create_time" property="createTime"/>
+    <result column="modify_time" property="modifyTime"/>
+    <result column="is_deleted" property="isDeleted"/>
   </resultMap>
   <!-- 通用查询结果列 -->
   <sql id="Base_Column_List">
-  id, role_name, remarks, create_time, modify_time, is_deleted
+    id, role_name, remarks, create_time, modify_time, is_deleted
   </sql>
   <select id="selectRoleByUserId" resultType="java.lang.String">
     SELECT

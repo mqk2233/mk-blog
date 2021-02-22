@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.mk.blog.entity.Article;
 import com.mk.blog.entity.Category;
+import com.mk.blog.vo.ArticleDetailsVo;
 import com.mk.blog.vo.ArticleListVo;
 import com.mk.blog.vo.TimeAisVo;
 
@@ -12,7 +13,6 @@ import java.util.List;
 /**
  * @author MK
  * @describe 文章表服务类
- * @date 2021-01-29 14:44:28
  */
 public interface IArticleService extends IService<Article> {
 
@@ -25,7 +25,6 @@ public interface IArticleService extends IService<Article> {
      * @param page      分页参数
      * @return {@link List<Article> }
      * @author MK
-     * @date 2021/2/19 10:35
      */
     IPage<ArticleListVo> articleList(String title, Integer isDeleted, Integer status, IPage<ArticleListVo> page);
 
@@ -33,43 +32,61 @@ public interface IArticleService extends IService<Article> {
      * 获取当前id文章
      *
      * @param id 文章id
-     * @return pers.mk.blog.bean.entity.Article
+     * @return {@link ArticleDetailsVo }
+     * @author MK
      */
-    Article articleById(Long id);
+    ArticleDetailsVo articleById(Long id);
 
     /**
      * 新增文章
      *
-     * @param article 文章实体
+     * @param article 文章对象
+     * @return {@link boolean }
+     * @author MK
      */
-    int addArticle(Article article);
+    boolean addArticle(ArticleDetailsVo article);
 
     /**
      * 编辑文章
      *
-     * @param article 文章实体
+     * @param article 文章对象
+     * @return {@link boolean }
+     * @author MK
      */
-    int editArticle(Article article);
+    boolean editArticle(ArticleDetailsVo article);
 
     /**
      * 删除文章
      *
      * @param id 文章id
+     * @return {@link boolean }
+     * @author MK
      */
-    int delArticle(Long id);
+    boolean delArticle(Long id);
 
     /**
      * 发布文章
      *
      * @param id 文章id
-     * @return int
+     * @return {@link boolean }
+     * @author MK
      */
-    int releaseArticle(Long id);
+    boolean releaseArticle(Long id);
+
+    /**
+     * 恢复文章
+     *
+     * @param id 文章id
+     * @return {@link boolean }
+     * @author MK
+     */
+    boolean recoveryArticle(Long id);
 
     /**
      * 时光轴
      *
-     * @return java.util.List<pers.mk.blog.bean.entity.TimeAis>
+     * @return {@link boolean }
+     * @author MK
      */
     List<TimeAisVo> timeAis();
 
@@ -78,6 +95,7 @@ public interface IArticleService extends IService<Article> {
      *
      * @param category 分类对象
      * @return java.util.List<java.lang.Long>
+     * @author MK
      */
-    List<String> buildCategoryIds(Category category, List<String> categoryIds);
+    List<Long> buildCategoryIds(Category category, List<Long> categoryIds);
 }

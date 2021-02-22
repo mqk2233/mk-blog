@@ -20,7 +20,6 @@ import java.util.stream.Collectors;
 /**
  * @author MK
  * @describe 全局异常处理器
- * @date 2021/1/26
  */
 @RestControllerAdvice
 public class BaseExceptionHandler {

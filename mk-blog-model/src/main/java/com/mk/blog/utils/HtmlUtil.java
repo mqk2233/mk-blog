@@ -5,6 +5,7 @@ import java.util.regex.Pattern;
 
 /**
  * @author MK
+ * @describe http工具类
  **/
 public class HtmlUtil {
 
@@ -15,9 +16,10 @@ public class HtmlUtil {
      * @return java.lang.String
      */
     public static String getText(String html) {
-        String text = html.replaceAll("<.*?>", "");
+        String text = html.replaceAll("<.*?>", "")
+                .replace("Table of Contents", "");
         if (text.length() > 204) {
-            return text.substring(3, 200) + "...";
+            return text.substring(0, 200) + "...";
         } else {
             return text;
         }

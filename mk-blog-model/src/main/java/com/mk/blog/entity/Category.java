@@ -12,7 +12,6 @@ import java.time.LocalDateTime;
 /**
  * @author MK
  * @describe 类别表实体类
- * @date 2021-01-29 14:45:11
  */
 @Data
 @AllArgsConstructor
@@ -55,6 +54,5 @@ public class Category implements Serializable {
     @TableField("is_deleted")
     @TableLogic
     private Integer isDeleted;
-
 
 }

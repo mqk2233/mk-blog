@@ -1,6 +1,6 @@
 package com.mk.blog.impl;
 
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.mk.blog.entity.User;
 import com.mk.blog.enums.ResponseEnum;
 import com.mk.blog.exception.CustomException;
@@ -17,22 +17,19 @@ import java.util.stream.Collectors;
 
 /**
  * @author MK
- * @date 2021/1/6
  */
 @Service
-public class UserDetailsServiceImpl implements UserDetailsService {
+public class UserDetailsServiceImpl extends ServiceImpl<UserMapper, User> implements UserDetailsService {
 
-    @Resource
-    private UserMapper userMapper;
     @Resource
     private RoleMapper roleMapper;
 
     @Override
     public UserDetails loadUserByUsername(String s) {
-        LambdaQueryWrapper<User> wrapper = new LambdaQueryWrapper<>();
-        wrapper.eq(User::getUserName, s);
-        User user = Optional.ofNullable(userMapper.selectOne(wrapper))
-                .orElseThrow(()-> new CustomException(ResponseEnum.LOGIN_ERROR));
+        User user = Optional.ofNullable(this.lambdaQuery()
+                .eq(User::getUserName, s)
+                .one())
+                .orElseThrow(() -> new CustomException(ResponseEnum.LOGIN_ERROR));
         return new org.springframework.security.core.userdetails.User(
                 user.getUserName(),
                 user.getPassWord(),

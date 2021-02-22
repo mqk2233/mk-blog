@@ -1,11 +1,12 @@
 <template>
   <BackTop class="back-top-move">
-    <img :src="bg" alt="返回顶部" />
+    <img :src="bg" alt="返回顶部"/>
   </BackTop>
 </template>
 
 <script>
 import Logo from "../../src/assets/top.png";
+
 export default {
   data() {
     return {
@@ -19,6 +20,7 @@ export default {
 .back-top-move :hover {
   animation: anime-face 5s infinite ease-in-out;
 }
+
 @keyframes anime-face {
   2%,
   24%,

@@ -15,9 +15,9 @@ import org.springframework.stereotype.Service;
 #if(${kotlin})
 open class ${table.serviceImplName} : ${table.serviceName} {
 
-}
+        }
 #else
-public class ${table.serviceImplName} extends ${superServiceImplClass}<${table.mapperName}, ${entity}> implements ${table.serviceName} {
+        public class ${table.serviceImplName} extends ${superServiceImplClass}<${table.mapperName}, ${entity}>implements ${table.serviceName} {
 
-}
+        }
 #end

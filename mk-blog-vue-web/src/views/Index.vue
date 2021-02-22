@@ -2,52 +2,52 @@
   <div class="layout clearfix">
     <Layout>
       <Header
-        ref="header"
-        class="layout-header-bar layout-header-bar-hover slide-up slide-down"
+          ref="header"
+          class="layout-header-bar layout-header-bar-hover slide-up slide-down"
       >
         <Menu
-          active-name="blog"
-          mode="horizontal"
-          theme="light"
-          style="height: 0;font-weight: 800;"
-          ref="menu"
+            active-name="blog"
+            mode="horizontal"
+            theme="light"
+            style="height: 0;font-weight: 800;"
+            ref="menu"
         >
           <div class="layout-logo">
             <h2 @click="toHome">MK' blog</h2>
           </div>
           <div class="layout-nav">
             <MenuItem name="blog" replace to="blog">
-              <Icon type="ios-navigate" />
+              <Icon type="ios-navigate"/>
               首页
             </MenuItem>
             <MenuItem name="file" replace to="file">
-              <Icon type="ios-keypad" />
+              <Icon type="ios-keypad"/>
               归档
             </MenuItem>
             <MenuItem name="classify" replace to="classify">
-              <Icon type="ios-analytics" />
+              <Icon type="ios-analytics"/>
               分类
             </MenuItem>
             <MenuItem name="labelI" replace to="labelI">
-              <Icon type="md-bookmark" />
+              <Icon type="md-bookmark"/>
               标签
             </MenuItem>
           </div>
         </Menu>
       </Header>
       <Content class="content-style">
-        <router-view />
+        <router-view/>
       </Content>
       <Footer class="layout-footer-center">
         Copyright © 2019 - MK. All Rights Reserved
       </Footer>
     </Layout>
     <vue-canvas-nest
-      :config="{ color: '#a3a3a3', opacity: '1', count: 80 }"
-      class="vue-canvas-nest-element"
-      style="z-index: 0 !important;"
+        :config="{ color: '#a3a3a3', opacity: '1', count: 80 }"
+        class="vue-canvas-nest-element"
+        style="z-index: 0 !important;"
     />
-    <app-live />
+    <app-live/>
   </div>
 </template>
 <script>
@@ -67,7 +67,7 @@ export default {
       let last_scroll_position;
       let header = this.$refs.header.$el;
       // 向下滚动
-      window.addEventListener("scroll", function() {
+      window.addEventListener("scroll", function () {
         last_scroll_position = window.scrollY;
         // 向下滚动
         if (last_scroll_position > 70) {
@@ -81,7 +81,7 @@ export default {
       });
     },
     toHome() {
-      this.$router.replace({ name: "blog" });
+      this.$router.replace({name: "blog"});
       this.$refs.menu.currentActiveName = this.$route.path.slice(1);
     },
     updateMenu() {
@@ -108,6 +108,7 @@ export default {
   position: relative;
   overflow: hidden;
 }
+
 .layout-logo {
   float: left;
   position: relative;
@@ -159,15 +160,18 @@ export default {
   opacity: 0.7;
   background-color: #eeeeee;
 }
+
 .slide-up {
   transform: translateY(-100px);
   transition: transform 0.5s ease-out, background-color 2s;
 }
+
 /*导航菜单向下滑动*/
 .slide-down {
   transform: translateY(0);
   transition: transform 0.5s ease-out, background-color 2s;
 }
+
 h2 {
   color: #444343;
   cursor: pointer;

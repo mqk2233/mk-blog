@@ -11,6 +11,7 @@
     "core-js": "^3.6.5",
     "echarts": "^5.0.0",
     "iview-loader": "^1.3.0",
+    "less-loader": "^8.0.0",
     "live2d-vue": "^0.2.5",
     "mavon-editor": "^2.9.1",
     "qs": "^6.9.6",
@@ -19,6 +20,7 @@
     "vue-axios-plugin": "^1.3.0",
     "vue-canvas-nest": "^2.0.0",
     "vue-router": "^3.2.0",
+    "vue-side-catalog": "^2.0.0",
     "vuex": "^3.6.2"
   },
   "devDependencies": {

@@ -11,7 +11,7 @@ import java.util.Date;
 
 /**
  * @author MK
- * @date 2021/1/12
+ * @describe jwt工具类
  */
 public class JwtUtil {
 

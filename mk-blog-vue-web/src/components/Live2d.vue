@@ -7,6 +7,9 @@
     div.tools-panel
       live2dTools(v-for="(item,index) in toolsData" :key="index" v-if="item.show" :position="item.position" @click="toolsClick(item)" :width="item.width" :toolsID="item.tabMsg" :tabMsg="item.tabMsg" :customDialogue='item.customDialogue' :backgroundColor="item.backgroundColor" ref='tool')
 
+
+
+
 </template>
 
 <script>
@@ -57,25 +60,25 @@ export default {
   mounted() {
     setInterval(() => {
       fetch(
-        "https://api.vvhan.com/api/reping"
+          "https://api.vvhan.com/api/reping"
       )
-        .then(res => res.json())
-        .then(data => {
-          if (!this.isDialogue) {
-            let tool = this.$refs.tool.filter(item => {
-              return item.customDialogue;
-            });
-            if (tool && tool.length > 0) tool[0].showMessage(data.data.content);
-          } else {
-            this.$refs.dialogue.showMessage(data.data.content);
-          }
-        });
+          .then(res => res.json())
+          .then(data => {
+            if (!this.isDialogue) {
+              let tool = this.$refs.tool.filter(item => {
+                return item.customDialogue;
+              });
+              if (tool && tool.length > 0) tool[0].showMessage(data.data.content);
+            } else {
+              this.$refs.dialogue.showMessage(data.data.content);
+            }
+          });
     }, 10000);
     this.modelPath =
-      "/api/static/packages/live2d-widget-model-unitychan/assets/unitychan.model.json";
+        "/api/static/packages/live2d-widget-model-unitychan/assets/unitychan.model.json";
     setTimeout(() => {
       this.modelPaths =
-        "/api/static/packages/live2d-widget-model-unitychan/assets/unitychan.model.json";
+          "/api/static/packages/live2d-widget-model-unitychan/assets/unitychan.model.json";
     }, 2000000);
   },
   methods: {

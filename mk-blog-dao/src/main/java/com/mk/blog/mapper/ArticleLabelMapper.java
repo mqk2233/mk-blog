@@ -6,9 +6,8 @@ import com.mk.blog.entity.ArticleLabel;
 import java.util.List;
 
 /**
- * @describe 文章标签中间表mapper类
  * @author MK
- * @date 2021-01-29 14:44:58
+ * @describe 文章标签中间表mapper类
  */
 public interface ArticleLabelMapper extends BaseMapper<ArticleLabel> {
 
@@ -18,7 +17,6 @@ public interface ArticleLabelMapper extends BaseMapper<ArticleLabel> {
      * @param articleId 文章id
      * @return {@link String }
      * @author MK
-     * @date 2021/2/19 11:13
      */
     List<String> selectLabelName(Long articleId);
 }

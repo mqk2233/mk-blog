@@ -12,7 +12,6 @@ import java.time.LocalDateTime;
 /**
  * @author MK
  * @describe 用户角色中间表实体类
- * @date 2021-01-29 14:46:35
  */
 @Data
 @AllArgsConstructor

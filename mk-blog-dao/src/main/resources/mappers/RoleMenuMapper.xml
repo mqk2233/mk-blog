@@ -4,15 +4,15 @@
 
   <!-- 通用查询映射结果 -->
   <resultMap id="BaseResultMap" type="com.mk.blog.entity.RoleMenu">
-    <id column="id" property="id" />
-    <result column="role_id" property="roleId" />
-    <result column="menu_id" property="menuId" />
-    <result column="create_time" property="createTime" />
-    <result column="modify_time" property="modifyTime" />
-    <result column="is_deleted" property="isDeleted" />
+    <id column="id" property="id"/>
+    <result column="role_id" property="roleId"/>
+    <result column="menu_id" property="menuId"/>
+    <result column="create_time" property="createTime"/>
+    <result column="modify_time" property="modifyTime"/>
+    <result column="is_deleted" property="isDeleted"/>
   </resultMap>
   <!-- 通用查询结果列 -->
   <sql id="Base_Column_List">
-  id, role_id, menu_id, create_time, modify_time, is_deleted
+    id, role_id, menu_id, create_time, modify_time, is_deleted
   </sql>
 </mapper>
