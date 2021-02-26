@@ -4,24 +4,13 @@
       <i-form :label-width="60" inline>
         <Row>
           <i-col span="5">
-            <FormItem label="文章标题" prop="articleEdit.title">
-              <label>
-                <Input
-                    type="text"
-                    v-model="articleEdit.title"
-                    placeholder="文章标题"
-                />
-              </label>
-            </FormItem>
-          </i-col>
-          <i-col span="5">
             <FormItem label="分类" prop="articleEdit.categoryId">
               <Cascader
                   @on-change="getCategoryId"
                   :data="categoryList"
                   v-model="articleEdit.categoryIds"
                   clearable
-                  style="width: 13em"
+                  class="form"
               />
             </FormItem>
           </i-col>
@@ -32,7 +21,7 @@
                   clearable
                   :max-tag-count="2"
                   v-model="articleEdit.labelIds"
-                  style="width: 13em"
+                  class="form"
               >
                 <Option
                     v-for="item in labelList"
@@ -44,19 +33,6 @@
               </i-select>
             </FormItem>
           </i-col>
-          <i-col span="7">
-            <FormItem label="是否启用">
-              <i-switch
-                  :false-value="1"
-                  size="large"
-                  :true-value="0"
-                  v-model="articleEdit.isDeleted"
-              >
-                <span slot="open">启用</span>
-                <span slot="close">禁用</span>
-              </i-switch>
-            </FormItem>
-          </i-col>
         </Row>
       </i-form>
       <mavon-editor
@@ -65,11 +41,11 @@
           @change="changeData"
           v-model="articleEdit.contentMd"
           :ishljs="true"
-          style="z-index: 0"
+          class="editor"
       />
     </Card>
     <i-form inline>
-      <Row type="flex" justify="center" style="margin-top: 20px">
+      <Row type="flex" justify="center" class="row">
         <FormItem>
           <Button @click="back">取消</Button>
         </FormItem>
@@ -135,7 +111,8 @@ export default {
     // 编辑文章
     doAddArticle() {
       const param = this.articleEdit;
-      if (param.id !== 0) {
+      console.log(param.id)
+      if (param.id !== 0 && param.id !== null) {
         this.$api.article
             .doEditArticle(param)
             .then(res => {
@@ -184,7 +161,7 @@ export default {
       this.articleEdit.categoryId = value[value.length - 1];
     }
   },
-  mounted: function () {
+  mounted() {
     this.getCategoryList();
     this.getLabelList();
     if (
@@ -197,3 +174,14 @@ export default {
   }
 };
 </script>
+<style>
+.form{
+  width: 13em
+}
+.editor{
+  z-index: 0
+}
+.row{
+  margin-top: 20px
+}
+</style>

@@ -1,23 +1,61 @@
-<template lang="pug">
-  div#app
-    live2d(v-if="islive2d" :modelPath="modelPaths" ref='l2dManges')
-    div.live2d-panel
-      dialogue(v-if="isDialogue" :customDialogue="customDialogue" ref='dialogue')
-      live2d(v-if="islive2d" :modelPath="modelPath" ref='l2dMange')
-    div.tools-panel
-      live2dTools(v-for="(item,index) in toolsData" :key="index" v-if="item.show" :position="item.position" @click="toolsClick(item)" :width="item.width" :toolsID="item.tabMsg" :tabMsg="item.tabMsg" :customDialogue='item.customDialogue' :backgroundColor="item.backgroundColor" ref='tool')
-
-
-
-
+<template>
+  <div class="app">
+    <div class="live2d-panel">
+      <live2d v-if="islive2d" :modelPath="modelPath" ref='l2dMange'></live2d>
+    </div>
+    <div class="tools-panel">
+      <live2dTools v-for="(item,index) in toolsData"
+                   :key="index"
+                   v-if="item.show"
+                   :position="item.position"
+                   @click="toolsClick(item)"
+                   :width="item.width"
+                   :toolsID="item.tabMsg"
+                   :tabMsg="item.tabMsg"
+                   :customDialogue='item.customDialogue'
+                   :backgroundColor="item.backgroundColor"
+                   ref='tool'
+      />
+        <aplayer :fixed="player.fixed"
+                 :autoplay="player.autoplay"
+                 :audio="musicList"
+                  />
+    </div>
+  </div>
 </template>
-
 <script>
 import custom from "../custom";
 
 export default {
   name: "app",
   data: () => ({
+    player: {
+      autoplay: true,
+      listFolded: true,
+      float: true,
+      mini: true,
+      fixed: true,
+      repeat: "repeat-all"
+    },
+    musicList: [{
+      name: "Illusionary Daytime",
+      artist: "Shirfine",
+      url: "/api/static/music/1.mp3",
+      cover: "/api/static/music/1.jpg"
+    },
+      {
+        name: "Tears of Cherry Blossoms",
+        artist: "Shirfine",
+        url: "/api/static/music/2.mp3",
+        cover: "/api/static/music/2.jpg"
+      },
+      {
+        name: "Windy Hill",
+        artist: "羽肿",
+        url: "/api/static/music/3.mp3",
+        cover: "/api/static/music/3.jpg"
+      },
+    ],
     modelPath: "",
     modelPaths: "",
     customDialogue: custom,
@@ -30,25 +68,19 @@ export default {
         position: "left"
       },
       {
-        tabMsg: "home",
+        tabMsg: "github",
         backgroundColor: "#add8e6",
         show: true,
         position: "left"
       },
       {
-        tabMsg: "save",
+        tabMsg: "保存",
         backgroundColor: "#add8e6",
         show: true,
         position: "left"
       },
       {
-        tabMsg: "about",
-        backgroundColor: "#add8e6",
-        show: true,
-        position: "left"
-      },
-      {
-        tabMsg: "hide",
+        tabMsg: "隐藏",
         backgroundColor: "#add8e6",
         show: true,
         position: "left"
@@ -60,7 +92,7 @@ export default {
   mounted() {
     setInterval(() => {
       fetch(
-          "https://api.vvhan.com/api/reping"
+          "https://v1.hitokoto.cn/?c=b"
       )
           .then(res => res.json())
           .then(data => {
@@ -68,9 +100,9 @@ export default {
               let tool = this.$refs.tool.filter(item => {
                 return item.customDialogue;
               });
-              if (tool && tool.length > 0) tool[0].showMessage(data.data.content);
+              if (tool && tool.length > 0) tool[0].showMessage(data.hitokoto);
             } else {
-              this.$refs.dialogue.showMessage(data.data.content);
+              this.$refs.dialogue.showMessage(data.hitokoto);
             }
           });
     }, 10000);
@@ -78,7 +110,7 @@ export default {
         "/api/static/packages/live2d-widget-model-unitychan/assets/unitychan.model.json";
     setTimeout(() => {
       this.modelPaths =
-          "/api/static/packages/live2d-widget-model-unitychan/assets/unitychan.model.json";
+          "/api/static/packages/live2d-widget-model-unitychan/assets/unitychan.physics.json";
     }, 2000000);
   },
   methods: {
@@ -89,9 +121,6 @@ export default {
           break;
         case "save":
           this.$refs.l2dMange.save(`live2d-${Date.now()}.png`);
-          break;
-        case "about":
-          window.open("https://github.com/LingHanChuJian/live2d-vue");
           break;
         case "hide":
           this.islive2d = false;
@@ -127,7 +156,7 @@ export default {
 .tools-panel
   position fixed
   left 0
-  bottom 5em
+  bottom 7em
   max-width 100px
   z-index 999
 
@@ -138,6 +167,12 @@ export default {
   z-index 999
 
 #app
-  height 0
+  height 100px
   z-index 999
+
+.aPlayer
+  position: fixed !important
+  margin-left 0;
+  z-index 99
+
 </style>

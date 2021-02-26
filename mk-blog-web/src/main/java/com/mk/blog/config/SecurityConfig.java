@@ -36,8 +36,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.headers().frameOptions().disable();
-        // 允许所有接口访问
-        http.authorizeRequests().anyRequest().permitAll();
+        // 接口拦截规则
+        http.authorizeRequests()
+                .antMatchers("/authorization/**")
+                .authenticated()
+                .anyRequest()
+                .permitAll();
         // 允许跨越
         http.cors();
         // 禁用csrf攻击防护机制

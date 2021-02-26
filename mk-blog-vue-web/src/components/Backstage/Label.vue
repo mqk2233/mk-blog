@@ -1,8 +1,8 @@
 <template>
   <div>
-    <Card style="margin-bottom: 0.5em;">
+    <Card class="card">
       <i-form :label-width="80" inline>
-        <FormItem label="标签名" style="margin: auto;">
+        <FormItem label="标签名" class="form-item">
           <label>
             <Input
                 clearable
@@ -11,7 +11,7 @@
             />
           </label>
         </FormItem>
-        <FormItem style="float: right;">
+        <FormItem class="form-item2">
           <Button
               @click="openModel('', false, null)"
               icon="md-create"
@@ -41,7 +41,7 @@
           <Button
               @click="openModel(row.id, true, row)"
               size="small"
-              style="margin-right: 5px"
+              class="button"
               ghost
               type="info"
           >编辑
@@ -93,7 +93,7 @@
         @on-page-size-change="pageSizeChange"
         show-sizer
         show-total
-        style="float: right; margin-top: 1em;"
+        class="page"
         transfer
     />
   </div>
@@ -262,8 +262,28 @@ export default {
       this.getLabelList();
     }
   },
-  created: function () {
+  created() {
     this.getLabelList();
   }
 };
 </script>
+<style>
+.card {
+  margin-bottom: 0.5em;
+}
+
+.form-item {
+  margin: auto;
+}
+
+.form-item2 {
+  float: right;
+}
+
+.button {
+  margin-right: 5px
+}
+.page{
+  float: right; margin-top: 1em;
+}
+</style>

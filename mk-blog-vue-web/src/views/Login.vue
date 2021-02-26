@@ -104,7 +104,7 @@ export default {
     };
   },
   methods: {
-    doLogin: function () {
+    doLogin() {
       const data = {
         userName: this.loginForm.username,
         passWord: this.loginForm.password,
@@ -123,7 +123,7 @@ export default {
             Notice.warning({title: err.data.msg});
           });
     },
-    changeCodeImg: function () {
+    changeCodeImg() {
       this.loginForm.verifyCode = "";
       let num = Math.ceil(Math.random() * 10); //生成一个随机数（防止缓存）
       this.loginForm.verifyCodeImg = "/api/user/get-verification-code?" + num;

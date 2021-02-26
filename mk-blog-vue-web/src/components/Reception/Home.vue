@@ -1,24 +1,24 @@
 <template>
-  <div style="margin: 0 auto;">
-    <Background url="https://i.loli.net/2020/02/02/ji3LWXYzlGacmMO.jpg">
-      <template v-slot:text style="margin: 0 auto;">
+  <div class="blog">
+    <Background :index="Math.floor(Math.random() * (17 - 1 + 1) + 1)">
+      <template v-slot:text class="background-text">
         <h1>MK' Blog</h1>
         <h2>记录足迹，留住美好。</h2>
       </template>
     </Background>
-    <div style="margin-top: 90vh;">
-      <Card class="card-scale" v-for="item in list" :key="item.id">
+    <div class="content">
+      <Card class="card-scale" v-for="(item, key) in list" :key="key">
         <p
             slot="title"
             @click="
             $router.push({ name: 'blogDetails', params: { id: item.id } })
           "
-            style="cursor: pointer"
+            class="title"
         >
           {{ item.title }}
         </p>
         <div slot="extra">
-          <span v-for="(labels, key) in item.labelNames" v-bind:key="key">
+          <span v-for="(labels, key) in item.labelNames" :key="key">
             <Tag color="blue">{{ labels }}</Tag>
           </span>
         </div>
@@ -28,21 +28,23 @@
           <img
               :src="time"
               alt="写作时间"
-              style="width: 20px;margin-right: 5px;"
+              class="time-img"
           />
-          <span style="position: absolute;">{{ item.createTime }}</span>
+          <span class="time-span">{{ item.createTime }}</span>
           <b
               @click="
               $router.push({ path: 'blogDetails', params: { id: item.id } })
             "
-              style="cursor:pointer;position: absolute;right: 15px;text-shadow: 0 0 2px;"
+              class="jump"
           >。。。</b
           >
         </div>
       </Card>
-      <Page :total="total" class-name="page"/>
+      <Spin v-show="bottom" >已经到底啦~~🤪</Spin>
+      <Spin v-show="loading">加载中~~😫</Spin>
       <MyBackTop/>
     </div>
+
   </div>
 </template>
 <script>
@@ -57,43 +59,67 @@ export default {
       img: "",
       time: Time,
       loading: true,
+      bottom: false,
       total: 0,
       list: [],
       searchArticleName: null,
       pageSize: 5,
-      currentPage: 1
+      currentPage: 0
     };
   },
   methods: {
-    // 文章列表
-    getArticleList() {
-      this.$api.article
-          .articleAdminList("", 0, this.pageSize, this.currentPage)
+    async getArticleList() {
+      this.loading = true;
+      this.currentPage++;
+      await this.$api.article
+          .articleAdminList("", this.$route.params.labelId, this.pageSize, this.currentPage)
           .then(res => {
-            this.list = res.data.data;
-            this.total = parseInt(res.data.total);
-            this.loading = false;
+            if (res.data.code === 200) {
+              this.list = this.list.concat(res.data.data);
+              this.total = parseInt(res.data.total);
+              this.loading = false;
+            }
           })
           .catch(err => {
             this.$Notice.warning({title: err.data.msg});
           });
+      console.log(this.total)
+      if (this.pageSize * this.currentPage >= this.total) {
+        this.bottom = true;
+      }
+    },
+    scroll() {
+      window.onscroll = () => {
+        //变量scrollTop是滚动条滚动时,距离顶部的距离
+        let scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+        //变量windowHeight是可视区的高度
+        let windowHeight = document.documentElement.clientHeight || document.body.clientHeight;
+        //变量scrollHeight是滚动条的总高度
+        let scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight;
+        //滚动条到底部的条件
+        if (scrollTop + windowHeight >= scrollHeight-1 && this.bottom !== true) {
+          //写后台加载数据的函数
+          this.getArticleList()
+        }
+      }
     }
   },
-  mounted: function () {
-    this.getArticleList();
+  mounted() {
+    this.scroll()
   }
-};
+}
+;
 </script>
 <style scoped>
 .card-scale:hover {
   transform: scale(1.05);
-  width: 100%;
   margin-top: 30px;
 }
 
 .card-scale {
-  width: 100%;
+  width: 100vh;
   margin-top: 30px;
+  margin-bottom: 5vh;
 }
 
 h1,
@@ -103,17 +129,49 @@ h2 {
   font-size: 80px;
   top: 30%;
   color: white;
-  font-family: none;
-  /*opacity: 0;*/
+  font-family: none,sans-serif;
   text-shadow: 3px 0 5px #f8f8f9;
-}
-
-.page {
-  margin-top: 5vh;
-  text-align: center;
 }
 
 h2 {
   font-size: 40px;
 }
+
+.background-text {
+  margin: 0 auto;
+}
+
+.blog {
+  margin: 0 auto;
+}
+
+.content {
+  margin-top: 110vh;
+}
+
+.title {
+  cursor: pointer
+}
+
+.time-img {
+  width: 20px;
+  margin-right: 5px;
+}
+
+.time-span {
+  position: absolute;
+}
+
+.jump {
+  cursor: pointer;
+  position: absolute;
+  right: 15px;
+  text-shadow: 0 0 2px;
+}
+
+.loading{
+  position: relative !important;
+  top: 5vh;
+}
+
 </style>

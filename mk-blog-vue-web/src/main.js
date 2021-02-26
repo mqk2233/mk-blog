@@ -8,6 +8,7 @@ import mavonEditor from "mavon-editor"
 import live2d from 'live2d-vue'
 import VueAxiosPlugin from 'vue-axios-plugin'
 import 'mavon-editor/dist/css/index.css'
+import APlayer from '@moefe/vue-aplayer';
 
 Vue.config.productionTip = false
 Vue.use(mavonEditor)
@@ -21,6 +22,10 @@ Vue.use(VueAxiosPlugin, {
     resHandleFunc: response => response,
     resErrorFunc: error => Promise.reject(error)
 })
+Vue.use(APlayer, {
+    defaultCover: 'https://github.com/u3u.png',
+    productionTip: true,
+});
 new Vue({
     router,
     store,

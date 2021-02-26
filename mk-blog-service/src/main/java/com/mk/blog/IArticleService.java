@@ -19,14 +19,14 @@ public interface IArticleService extends IService<Article> {
     /**
      * 获取文章列表
      *
-     * @param title     文章标题
-     * @param isDeleted 是否删除
-     * @param status    文章状态
-     * @param page      分页参数
+     * @param title   文章标题
+     * @param labelId 文章分类id
+     * @param status  文章状态
+     * @param page    分页参数
      * @return {@link List<Article> }
      * @author MK
      */
-    IPage<ArticleListVo> articleList(String title, Integer isDeleted, Integer status, IPage<ArticleListVo> page);
+    IPage<ArticleListVo> articleList(String title, Long labelId, Integer status, IPage<ArticleListVo> page);
 
     /**
      * 获取当前id文章

@@ -108,7 +108,7 @@
                 name="6-1"
                 replace
                 target="_blank"
-                to="http://127.0.0.1:8007/MkBlog/druid/login.html"
+                to="api/druid/login.html"
             >
               <span>Druid监控</span>
             </menu-item>
@@ -149,7 +149,7 @@ export default {
     };
   },
   methods: {
-    getCurrentUser: function () {
+    getCurrentUser() {
       this.$api.user
           .getCurrentUser()
           .then(res => {
@@ -162,7 +162,7 @@ export default {
                 .catch(err => this.$Notice.warning({title: err.toString()}));
           });
     },
-    doJump: function (path) {
+    doJump(path) {
       this.$router
           .replace({name: path})
           .catch(err => this.$Notice.warning({title: err.toString()}));
@@ -171,7 +171,7 @@ export default {
       }
     }
   },
-  created: function () {
+  created() {
     this.getCurrentUser();
   },
   computed: {

@@ -6,37 +6,23 @@ import qs from "qs";
 
 const article = {
     /**
-     * 前台文章列表
+     * 文章列表
      *
      * @param title 文章标题
      * @param pageSize 页长
+     * @param labelId 标签
      * @param pageNum 页码
      * @returns {Promise<AxiosResponse<T>>}
      */
-    articleList(title, pageSize, pageNum) {
-        return axios.get(`api/article/getarticlelist`, {
-            params: {
-                title: title,
-                pageSize: pageSize,
-                pageNum: pageNum
-            }
-        });
-    },
-
-    /**
-     * 后台文章列表
-     *
-     * @param title 文章标题
-     * @param pageSize 页长
-     * @param isDeleted 是否删除
-     * @param pageNum 页码
-     * @returns {Promise<AxiosResponse<T>>}
-     */
-    articleAdminList(title, isDeleted, pageSize, pageNum) {
+    articleAdminList(title, labelId, pageSize, pageNum) {
         if (title !== null && title !== '') {
             title = "/" + title
         }
-        return axios.get(`api/article/get-article-list${title}/${isDeleted}/${pageNum}/${pageSize}`);
+        if (labelId !== 0 && labelId !== null && labelId !== '' && labelId !== undefined) {
+            return axios.get(`api/article/get-article-list${title}/${labelId}/${pageNum}/${pageSize}`);
+        } else {
+            return axios.get(`api/article/get-article-list${title}/${pageNum}/${pageSize}`);
+        }
     },
 
     /**

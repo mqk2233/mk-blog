@@ -55,6 +55,11 @@ import Live from "../components/Live2d.vue";
 import vueCanvasNest from "vue-canvas-nest";
 
 export default {
+  components: {
+    "app-live": Live,
+    vueCanvasNest
+  },
+
   data() {
     return {
       lastScrollPosition: window.scrollY,
@@ -81,7 +86,7 @@ export default {
       });
     },
     toHome() {
-      this.$router.replace({name: "blog"});
+      this.$router.push({name: "blog"});
       this.$refs.menu.currentActiveName = this.$route.path.slice(1);
     },
     updateMenu() {
@@ -96,10 +101,6 @@ export default {
   mounted() {
     this.updateMenu();
     this.headerMove();
-  },
-  components: {
-    "app-live": Live,
-    vueCanvasNest
   }
 };
 </script>
@@ -125,8 +126,7 @@ export default {
 .content-style {
   display: flex !important;
   z-index: 3 !important;
-  margin: 10em 30em 0 30em !important;
-  min-height: 700px !important;
+  min-height: 100vh !important;
 }
 
 .layout-footer-center {
@@ -171,6 +171,7 @@ export default {
   transform: translateY(0);
   transition: transform 0.5s ease-out, background-color 2s;
 }
+
 
 h2 {
   color: #444343;

@@ -1,8 +1,8 @@
 <template>
   <div>
-    <Card style="margin-bottom: 0.5em;">
+    <Card class="card">
       <i-form :label-width="80" inline>
-        <FormItem label="文章标题" style="margin: auto;">
+        <FormItem label="文章标题" class="form-item">
           <label>
             <Input
                 clearable
@@ -11,15 +11,7 @@
             />
           </label>
         </FormItem>
-        <FormItem label="是否删除" style="margin: auto;">
-          <label>
-            <Select v-model="isDeleted" clearable style="width:200px">
-              <Option v-model="isDeleted">是</Option>
-              <Option v-model="isDeleted">否</Option>
-            </Select>
-          </label>
-        </FormItem>
-        <FormItem style="float: right;">
+        <FormItem class="form-item2">
           <Button
               icon="md-create"
               style="margin-right: 1em"
@@ -49,7 +41,7 @@
           <Button
               @click="doReleaseArticle(row.id)"
               size="small"
-              style="margin-right: 5px"
+              class="button"
               type="success"
               ghost
               v-show="row.status === 0 && row.isDeleted === 0"
@@ -58,20 +50,11 @@
           <Button
               @click="$router.push({ name: 'addArticle', params: { id: row.id } })"
               size="small"
-              style="margin-right: 5px"
+              class="button"
               type="info"
               ghost
               v-show="row.isDeleted === 0"
           >编辑
-          </Button>
-          <Button
-              @click="doRecoveryArticle(row.id)"
-              size="small"
-              style="margin-right: 5px"
-              type="success"
-              ghost
-              v-show="row.isDeleted === 1"
-          >启用
           </Button>
           <Button
               @click="doDelArticle(row.id)"
@@ -92,7 +75,7 @@
         @on-page-size-change="pageSizeChange"
         show-sizer
         show-total
-        style="float: right; margin-top: 1em;"
+        class="page"
         transfer
     />
   </div>
@@ -145,17 +128,34 @@ export default {
         },
         {
           align: "center",
-          title: "是否启用",
-          key: "isDeleted",
+          title: "分类",
+          key: "categoryName",
           render: (h, params) => {
             return h(
                 "Tag",
                 {
                   props: {
-                    color: params.row.isDeleted === 0 ? "green" : "red"
+                    color: "#FFA2D3"
                   }
                 },
-                params.row.isDeleted === 0 ? "是" : "否"
+                params.row.categoryName
+            );
+          }
+        },
+        {
+          align: "center",
+          title: "标签",
+          key: "labelNames",
+          render: (h, params) => {
+            return h('div', params.row.labelNames.map(item => {
+                  return h("Tag",
+                      {
+                        props: {
+                          color: "gold"
+                        }
+                      },
+                      item)
+                })
             );
           }
         },
@@ -246,8 +246,28 @@ export default {
     }
 
   },
-  mounted: function () {
+  mounted() {
     this.getArticleList();
   }
 };
 </script>
+<style>
+.card {
+  margin-bottom: 0.5em;
+}
+
+.form-item {
+  margin: auto;
+}
+
+.form-item2 {
+  float: right;
+}
+
+.button {
+  margin-right: 5px
+}
+.page{
+  float: right; margin-top: 1em;
+}
+</style>

@@ -26,4 +26,7 @@ public class LabelListVo implements Serializable {
     @Schema(description = "是否删除(0-未删除， 1-删除)")
     private Integer isDeleted;
 
+    @Schema(description = "出现次数")
+    private Integer num;
+
 }

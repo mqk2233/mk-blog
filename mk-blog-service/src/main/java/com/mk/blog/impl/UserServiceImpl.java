@@ -3,6 +3,7 @@ package com.mk.blog.impl;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.mk.blog.IRedisService;
 import com.mk.blog.IUserService;
+import com.mk.blog.annotions.RedisCache;
 import com.mk.blog.constants.SystemConstant;
 import com.mk.blog.entity.User;
 import com.mk.blog.enums.ResponseEnum;
@@ -45,6 +46,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
     }
 
     @Override
+    @RedisCache
     public User oneUser(String userName) {
         return Optional.ofNullable(this.lambdaQuery()
                 .eq(User::getUserName, userName)

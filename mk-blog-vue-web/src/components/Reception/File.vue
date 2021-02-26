@@ -1,13 +1,13 @@
 <template>
   <div class="base-div">
     <Background
+        :index="Math.floor(Math.random() * (17 - 1 + 1) + 1)"
         time="1.5"
         height="70"
-        url="https://img.laoooo.cn:88/2019/07/20/5d326d07662e9.png"
     />
     <div class="a-bounceinL">
-      <h1 style="font-size: 50px">归档</h1>
-      <Timeline style="margin-top: 5px">
+      <h1 class="h1-text">归档</h1>
+      <Timeline class="time-line">
         <TimelineItem v-for="(item, key) in list" v-bind:key="key">
           <p class="time">{{ item.month }}</p>
           <p
@@ -15,7 +15,7 @@
               v-for="(item1, key) in item.articles"
               v-bind:key="key"
           >
-            <Tag color="blue" size="large" style="font-size: 14px">{{
+            <Tag color="blue" size="large" class="tag-font-size">{{
                 item1.createTime | date
               }}
             </Tag
@@ -52,7 +52,7 @@ export default {
           });
     }
   },
-  mounted: function () {
+  mounted() {
     this.getTimeAis();
   },
   filters: {
@@ -63,6 +63,18 @@ export default {
 };
 </script>
 <style lang="css" scoped>
+.h1-text {
+  font-size: 50px
+}
+
+.time-line {
+  margin-top: 5px
+}
+
+.tag-font-size {
+  font-size: 14px
+}
+
 .base-div {
   display: flex;
   z-index: 3;
@@ -84,8 +96,8 @@ export default {
 
 .a-bounceinL {
   animation: bounceinL 1s;
-  margin-top: 60vh;
-  margin-left: 25vh;
+  margin: 80vh 30vh 10vh 70vh;
+  width: 90vh;
 }
 
 @keyframes bounceinL {

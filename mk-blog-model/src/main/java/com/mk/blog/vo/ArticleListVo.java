@@ -52,5 +52,4 @@ public class ArticleListVo {
     @Schema(description = "分类名")
     private String categoryName;
 
-    private String catalog;
 }

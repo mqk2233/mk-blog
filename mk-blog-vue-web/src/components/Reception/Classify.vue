@@ -1,13 +1,13 @@
 <template>
   <div>
     <Background
+        :index="Math.floor(Math.random() * (17 - 1 + 1) + 1)"
         time="1.5"
         height="70"
-        url="https://i.loli.net/2020/02/04/t9Ts4OjuVlmNFrv.jpg"
     />
-    <div class="a-bounceinL text">
-      <h1 style="font-size: 50px">分类</h1>
-      <Tree :data="data5" style="font-size: 15px"/>
+    <div class="a-bounceinL">
+      <h1 class="h1-text">分类</h1>
+      <Tree :data="data5" class="tree-text"/>
     </div>
   </div>
 </template>
@@ -33,20 +33,24 @@ export default {
           });
     }
   },
-  mounted: function () {
+  mounted() {
     this.getCategoryList();
   }
 };
 </script>
 <style lang="css" scoped>
-.text {
-  margin-top: 70vh;
+
+.h1-text {
+  font-size: 50px
+}
+
+.tree-text {
+  font-size: 15px
 }
 
 .a-bounceinL {
   animation: bounceinL 1s;
-  margin-top: 60vh;
-  margin-left: 25vh;
+  margin: 80vh 30vh 10vh 80vh;
 }
 
 @keyframes bounceinL {

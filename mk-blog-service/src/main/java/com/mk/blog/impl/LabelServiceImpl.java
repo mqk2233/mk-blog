@@ -5,8 +5,12 @@ import com.mk.blog.ILabelService;
 import com.mk.blog.converter.LabelConverter;
 import com.mk.blog.entity.Label;
 import com.mk.blog.mapper.LabelMapper;
+import com.mk.blog.vo.LabelListVo;
 import com.mk.blog.vo.LabelVo;
 import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * @author MK
@@ -14,6 +18,14 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class LabelServiceImpl extends ServiceImpl<LabelMapper, Label> implements ILabelService {
+
+    @Resource
+    private LabelMapper labelMapper;
+
+    @Override
+    public List<LabelListVo> labelList() {
+        return labelMapper.selectLabelList();
+    }
 
     @Override
     public boolean addLabel(LabelVo vo) {

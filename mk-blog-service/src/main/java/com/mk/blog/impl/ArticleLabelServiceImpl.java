@@ -25,4 +25,11 @@ public class ArticleLabelServiceImpl extends ServiceImpl<ArticleLabelMapper, Art
                 .map(ArticleLabel::getLabelId)
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public boolean delByArticleId(Long articleId) {
+        return this.lambdaUpdate()
+                .eq(ArticleLabel::getArticleId, articleId)
+                .remove();
+    }
 }

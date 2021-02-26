@@ -15,4 +15,17 @@
   <sql id="Base_Column_List">
     id, label_name, sort, create_time, modify_time, is_deleted
   </sql>
+
+  <select id="selectLabelList" resultType="com.mk.blog.vo.LabelListVo">
+    SELECT
+      t1.*,
+      COUNT(t2.id) AS num
+    FROM
+      label t1
+      LEFT JOIN article_label t2 ON t1.id = t2.label_id AND t2.is_deleted = 0
+    WHERE
+      t1.is_deleted = 0
+    GROUP BY
+      t1.id
+  </select>
 </mapper>

@@ -1,19 +1,22 @@
 <template>
   <div>
     <Background
+        :index="Math.floor(Math.random() * (17 - 1 + 1) + 1)"
         time="1.5"
         height="70"
-        url="https://i.loli.net/2020/02/04/iawOIh9gMsNzHAL.jpg"
     />
     <div class="a-bounceinL text">
-      <h1 style="font-size: 50px">标签</h1>
+      <h1 class="h1-text">标签</h1>
       <Tag
+          checkable
+          class="tag"
           :color="randomColor()"
           size="large"
           v-for="(item, key) in list"
           v-bind:key="key"
+          @on-change="jump(item)"
       >
-        {{ item.labelName }}
+        {{ item.labelName }}({{ item.num }})
       </Tag>
     </div>
   </div>
@@ -39,6 +42,9 @@ export default {
             this.$Notice.warning({title: err.data.msg});
           });
     },
+    jump(label) {
+      this.$router.push({name: 'blog', params: {labelId: label.id}})
+    },
     randomColor() {
       return (
           "hsl(" +
@@ -46,7 +52,7 @@ export default {
           "," +
           Math.round(Math.random() * 100) +
           "%," +
-          Math.round(Math.random() * 80) +
+          60 +
           "%)"
       );
     }
@@ -57,15 +63,19 @@ export default {
 };
 </script>
 <style lang="css" scoped>
-.text {
-  margin-top: 70vh;
-  width: 70vh;
+
+.h1-text {
+  font-size: 50px
 }
 
 .a-bounceinL {
   animation: bounceinL 1s;
-  margin-top: 60vh;
-  margin-left: 25vh;
+  margin: 80vh 30vh 10vh 60vh;
+  width: 90vh;
+}
+
+.tag {
+  cursor: pointer
 }
 
 @keyframes bounceinL {

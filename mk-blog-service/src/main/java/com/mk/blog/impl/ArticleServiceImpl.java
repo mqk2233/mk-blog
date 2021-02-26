@@ -41,11 +41,12 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
     @Resource
     private CategoryMapper categoryMapper;
 
+
     @Override
-    public IPage<ArticleListVo> articleList(String title, Integer isDeleted, Integer status, IPage<ArticleListVo> page) {
+    public IPage<ArticleListVo> articleList(String title, Long labelId, Integer status, IPage<ArticleListVo> page) {
         Map<String, Object> map = new HashMap<>(3);
         map.put("title", title);
-        map.put("isDeleted", isDeleted);
+        map.put("labelId", labelId);
         map.put("status", status);
         page = articleMapper.selectAll(map, page);
         page.setRecords(page.getRecords().stream()
@@ -65,16 +66,17 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
         Collections.reverse(categoryIds);
         vo.setCategoryIds(categoryIds);
         vo.setLabelIds(iArticleLabelService.LabelIdByArticleId(vo.getId()));
-        vo.setContentMd(HtmlUtil.removeCatalog(article.getContentMd()));
-        vo.setCatalog(HtmlUtil.getCatalog(article.getContentHtml()));
+        vo.setCatalogTree(HtmlUtil.getCatalogTree(article.getContentHtml()));
         return vo;
     }
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public boolean addArticle(ArticleDetailsVo article) {
-        this.save(ArticleDetailsConverter.INSTANCE.toConvert(article));
-        return iArticleLabelService.saveBatch(article.getLabelIds().stream()
+    public boolean addArticle(ArticleDetailsVo vo) {
+        vo.setTitle(HtmlUtil.getTitle(vo.getContentHtml()));
+        Article article = ArticleDetailsConverter.INSTANCE.toConvert(vo);
+        this.save(article);
+        return iArticleLabelService.saveBatch(vo.getLabelIds().stream()
                 .map(item -> ArticleLabel.builder()
                         .articleId(article.getId())
                         .labelId(item)
@@ -85,14 +87,13 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public boolean editArticle(ArticleDetailsVo article) {
-        iArticleLabelService.lambdaUpdate()
-                .eq(ArticleLabel::getArticleId, article.getId())
-                .set(ArticleLabel::getIsDeleted, 1)
-                .update();
-        return iArticleLabelService.saveBatch(article.getLabelIds().stream()
+    public boolean editArticle(ArticleDetailsVo vo) {
+        vo.setTitle(HtmlUtil.getTitle(vo.getContentHtml()));
+        this.updateById(ArticleDetailsConverter.INSTANCE.toConvert(vo));
+        iArticleLabelService.delByArticleId(vo.getId());
+        return iArticleLabelService.saveBatch(vo.getLabelIds().stream()
                 .map(item -> ArticleLabel.builder()
-                        .articleId(article.getId())
+                        .articleId(vo.getId())
                         .labelId(item)
                         .build()
                 )
