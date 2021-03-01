@@ -111,7 +111,6 @@ export default {
     // 编辑文章
     doAddArticle() {
       const param = this.articleEdit;
-      console.log(param.id)
       if (param.id !== 0 && param.id !== null) {
         this.$api.article
             .doEditArticle(param)

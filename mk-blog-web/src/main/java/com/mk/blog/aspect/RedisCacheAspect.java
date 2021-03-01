@@ -25,7 +25,6 @@ public class RedisCacheAspect {
 
     @Pointcut("@annotation(com.mk.blog.annotions.RedisCache)")
     public void pointcutMethod() {
-
     }
 
     @Around("pointcutMethod()")

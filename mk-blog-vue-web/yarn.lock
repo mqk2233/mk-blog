@@ -3405,14 +3405,6 @@ ecc-jsbn@~0.1.1:
     jsbn "~0.1.0"
     safer-buffer "^2.1.0"
 
-echarts@^5.0.0:
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/echarts/-/echarts-5.0.0.tgz#66ec0ea47e3c93b2aadfbb2d719869932ad13ce0"
-  integrity sha512-6SDcJbLVOcfQyjPg+spNU1+JVrkU1B9fzUa5tpbP/mMNUPyigCOJwcEIQAJSbp9jt5UP3EXvQR0vtYXIo9AjyA==
-  dependencies:
-    tslib "1.10.0"
-    zrender "5.0.1"
-
 ee-first@1.1.1:
   version "1.1.1"
   resolved "https://registry.npm.taobao.org/ee-first/download/ee-first-1.1.1.tgz#590c61156b0ae2f4f0255732a158b266bc56b21d"
@@ -5405,11 +5397,6 @@ lodash.clonedeep@^4.5.0:
   version "4.5.0"
   resolved "https://registry.yarnpkg.com/lodash.clonedeep/-/lodash.clonedeep-4.5.0.tgz#e23f3f9c4f8fbdde872529c1071857a086e5ccef"
   integrity sha1-4j8/nE+Pvd6HJSnBBxhXoIblzO8=
-
-lodash.debounce@^4.0.8:
-  version "4.0.8"
-  resolved "https://registry.yarnpkg.com/lodash.debounce/-/lodash.debounce-4.0.8.tgz#82d79bff30a67c4005ffd5e2515300ad9ca4d7af"
-  integrity sha1-gteb/zCmfEAF/9XiUVMArZyk168=
 
 lodash.defaultsdeep@^4.6.1:
   version "4.6.1"
@@ -8277,11 +8264,6 @@ ts-pnp@^1.1.6:
   resolved "https://registry.npm.taobao.org/ts-pnp/download/ts-pnp-1.2.0.tgz#a500ad084b0798f1c3071af391e65912c86bca92"
   integrity sha1-pQCtCEsHmPHDBxrzkeZZEshrypI=
 
-tslib@1.10.0:
-  version "1.10.0"
-  resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.10.0.tgz#c3c19f95973fb0a62973fb09d90d961ee43e5c8a"
-  integrity sha512-qOebF53frne81cf0S9B41ByenJ3/IuH8yJKngAX35CmiZySA0khhkovshKK+jGCaMnVomla7gVlIcc3EvKPbTQ==
-
 tslib@^1.9.0:
   version "1.14.1"
   resolved "https://registry.npm.taobao.org/tslib/download/tslib-1.14.1.tgz#cf2d38bdc34a134bcaf1091c41f6619e2f672d00"
@@ -8672,14 +8654,6 @@ vue-router@^3.2.0:
   version "3.4.9"
   resolved "https://registry.npm.taobao.org/vue-router/download/vue-router-3.4.9.tgz#c016f42030ae2932f14e4748b39a1d9a0e250e66"
   integrity sha1-wBb0IDCuKTLxTkdIs5odmg4lDmY=
-
-vue-side-catalog@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/vue-side-catalog/-/vue-side-catalog-2.0.0.tgz#ffe366e0cf948bff3d34f4c149894413d3b42ba1"
-  integrity sha512-KNBVcAOwiO08QtnkOkWK+D5es1HoC3t0hpj4ru2EmIdFTQoyQMrV6qFL/YNIJkIvb06EivKnbVK3MFWLKdZFqw==
-  dependencies:
-    lodash.debounce "^4.0.8"
-    lodash.throttle "^4.1.1"
 
 vue-style-loader@^4.1.0, vue-style-loader@^4.1.2:
   version "4.1.2"
@@ -9079,10 +9053,3 @@ yorkie@^2.0.0:
     is-ci "^1.0.10"
     normalize-path "^1.0.0"
     strip-indent "^2.0.0"
-
-zrender@5.0.1:
-  version "5.0.1"
-  resolved "https://registry.yarnpkg.com/zrender/-/zrender-5.0.1.tgz#cc377136a9d00d0a177ca7f65c32aed2901928da"
-  integrity sha512-i8FNCKAKfF0EfZFJ6w2p30umBrCyy481/PePFQqPdtNgCl5Hp5z7/dovqb7soEoFkhNvhjJ/J4W9zFALeae6yA==
-  dependencies:
-    tslib "1.10.0"

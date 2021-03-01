@@ -135,7 +135,7 @@
 </template>
 <script>
 import Live2d from "../components/Live2d.vue";
-import {CURRENT_USER, LOGOUT} from "../mutation/mutation-types";
+import {CURRENT_USER, LOGOUT} from "@/mutation/mutation-types";
 
 export default {
   data() {
@@ -182,7 +182,12 @@ export default {
   watch: {
     $route(to) {
       // 对路由变化作出响应
-      this.title = to.meta.title;
+      if (this.$router.currentRoute.params.id != null &&
+          this.$router.currentRoute.params.id !== "") {
+        this.title = "编辑文章"
+      } else {
+        this.title = to.meta.title;
+      }
       this.path = to.path;
     }
   },
