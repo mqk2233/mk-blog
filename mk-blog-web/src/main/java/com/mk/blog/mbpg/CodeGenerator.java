@@ -46,7 +46,7 @@ public class CodeGenerator {
     private static final String CONTROLLER_PATH = PARENT_DIR + "/mk-blog-web/src/main/java/com/mk/blog/controller";
 
 
-    public static final String JDBC_MYSQL_URL = "jdbc:mysql://193.112.147.216:3306/blog?serverTimezone=UTC&characterEncoding=utf8";
+    public static final String JDBC_MYSQL_URL = "jdbc:mysql://127.0.0.1:3306/blog?serverTimezone=UTC&characterEncoding=utf8";
 
     public static final String JDBC_DRIVER_NAME = "com.mysql.cj.jdbc.Driver";
 
