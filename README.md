@@ -1,6 +1,6 @@
 # MK' Blog
 
-一个简单的前后端分离博客系统。
+> 一个简单的前后端分离博客系统。后端SpringBoot+SpringSecurity+Mybatis-Plus，前端Vue+Axios+Iview
 
 ## 项目架构
 
