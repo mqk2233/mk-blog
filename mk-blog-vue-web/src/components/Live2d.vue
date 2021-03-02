@@ -40,20 +40,20 @@ export default {
     musicList: [{
       name: "Illusionary Daytime",
       artist: "Shirfine",
-      url: "/api/static/music/1.mp3",
-      cover: "/api/static/music/1.jpg"
+      url: "https://cdn.jsdelivr.net/gh/mqk2233/blog-file/music/1.mp3",
+      cover: "https://cdn.jsdelivr.net/gh/mqk2233/blog-file/music/1.jpg"
     },
       {
         name: "Tears of Cherry Blossoms",
         artist: "Shirfine",
-        url: "/api/static/music/2.mp3",
-        cover: "/api/static/music/2.jpg"
+        url: "https://cdn.jsdelivr.net/gh/mqk2233/blog-file/music/2.mp3",
+        cover: "https://cdn.jsdelivr.net/gh/mqk2233/blog-file/music/2.jpg"
       },
       {
         name: "Windy Hill",
         artist: "羽肿",
-        url: "/api/static/music/3.mp3",
-        cover: "/api/static/music/3.jpg"
+        url: "https://cdn.jsdelivr.net/gh/mqk2233/blog-file/music/3.mp3",
+        cover: "https://cdn.jsdelivr.net/gh/mqk2233/blog-file/static/music/3.jpg"
       },
     ],
     modelPath: "",
@@ -107,10 +107,10 @@ export default {
           });
     }, 10000);
     this.modelPath =
-        "/api/static/packages/live2d-widget-model-unitychan/assets/unitychan.model.json";
+        "https://cdn.jsdelivr.net/gh/mqk2233/blog-file/live2d/live2d-widget-model-unitychan/assets/unitychan.model.json";
     setTimeout(() => {
       this.modelPaths =
-          "/api/static/packages/live2d-widget-model-unitychan/assets/unitychan.physics.json";
+          "https://cdn.jsdelivr.net/gh/mqk2233/blog-file/live2d/live2d-widget-model-unitychan/assets/unitychan.physics.json";
     }, 2000000);
   },
   methods: {

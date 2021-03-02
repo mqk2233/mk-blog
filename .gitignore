@@ -1,5 +1,6 @@
 HELP.md
 mvnw.cmd
+application-prod.yml
 mvnw
 target/
 logs/

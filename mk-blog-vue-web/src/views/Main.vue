@@ -91,6 +91,7 @@
             <Icon type="md-book"/>
             <span>文章管理</span>
           </menu-item>
+
           <menu-item name="categoryAdmin" replace to="/categoryAdmin">
             <Icon type="logo-buffer"/>
             <span>类别管理</span>
@@ -98,6 +99,10 @@
           <menu-item name="labelAdmin" replace to="/labelAdmin">
             <Icon type="md-attach"/>
             <span>标签管理</span>
+          </menu-item>
+          <menu-item name="api" to="api/swagger-ui/index.html?configUrl=/blog/v3/api-docs/swagger-config#/">
+            <Icon type="md-book"/>
+            <span>api文档</span>
           </menu-item>
           <Submenu name="6">
             <template slot="title">

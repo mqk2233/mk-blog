@@ -6,33 +6,37 @@
 
 <script>
 
-const bgs = ['https://i.loli.net/2021/02/25/H1GtlPXxIS6m2rb.jpg',
-  'https://i.loli.net/2021/02/25/Dfc7pWsQkObNvma.jpg',
-  'https://i.loli.net/2021/02/25/jlBOYnitTsxKSI4.jpg',
-  'https://i.loli.net/2021/02/25/yPI2s1VMrK9YkOF.jpg',
-  'https://i.loli.net/2021/02/25/SCcojT3GgEbnMNF.jpg',
-  'https://i.loli.net/2021/02/25/tpOgsqYa152djCR.jpg',
-  'https://i.loli.net/2021/02/25/oX1jS8R39tICAv7.jpg',
-  'https://i.loli.net/2021/02/25/tsXcQwZTNb6Y4ia.jpg',
-  'https://i.loli.net/2021/02/25/Tt5yRCwFfYjWHES.jpg',
-  'https://i.loli.net/2021/02/25/36cd2GDbtsSZXek.jpg',
-  'https://i.loli.net/2021/02/25/CSEtW92ZiqkLvnR.jpg',
-  'https://i.loli.net/2021/02/25/nqW1okhAgVMdrms.jpg',
-  'https://i.loli.net/2021/02/25/oYhQT8vRqzAc3ua.jpg',
-  'https://i.loli.net/2021/02/25/EADHfwdTYKPn3iv.jpg',
-  'https://i.loli.net/2021/02/25/vwchWTzDpPNiH3U.jpg',
-  'https://i.loli.net/2021/02/25/mCrklJ3bp84IPHD.jpg',
-  'https://i.loli.net/2021/02/25/l3DSE8rPtJuNy5x.jpg',
-  'https://i.loli.net/2021/02/25/mxXLqtNYQ7OMboc.jpg'];
+const bgs = ['https://cdn.jsdelivr.net/gh/mqk2233/blog-file/img/1.jpg',
+  'https://cdn.jsdelivr.net/gh/mqk2233/blog-file/img/2.jpg',
+  'https://cdn.jsdelivr.net/gh/mqk2233/blog-file/img/3.jpg',
+  'https://cdn.jsdelivr.net/gh/mqk2233/blog-file/img/4.jpg',
+  'https://cdn.jsdelivr.net/gh/mqk2233/blog-file/img/5.jpg',
+  'https://cdn.jsdelivr.net/gh/mqk2233/blog-file/img/6.jpg',
+  'https://cdn.jsdelivr.net/gh/mqk2233/blog-file/img/7.jpg',
+  'https://cdn.jsdelivr.net/gh/mqk2233/blog-file/img/8.jpg',
+  'https://cdn.jsdelivr.net/gh/mqk2233/blog-file/img/9.jpg',
+  'https://cdn.jsdelivr.net/gh/mqk2233/blog-file/img/10.jpg',
+  'https://cdn.jsdelivr.net/gh/mqk2233/blog-file/img/11.jpg',
+  'https://cdn.jsdelivr.net/gh/mqk2233/blog-file/img/12.jpg',
+  'https://cdn.jsdelivr.net/gh/mqk2233/blog-file/img/13.jpg',
+  'https://cdn.jsdelivr.net/gh/mqk2233/blog-file/img/14.jpg',
+  'https://cdn.jsdelivr.net/gh/mqk2233/blog-file/img/15.jpg',
+  'https://cdn.jsdelivr.net/gh/mqk2233/blog-file/img/16.jpg',
+  'https://cdn.jsdelivr.net/gh/mqk2233/blog-file/img/17.jpg',
+  'https://cdn.jsdelivr.net/gh/mqk2233/blog-file/img/18.jpg',
+  'https://cdn.jsdelivr.net/gh/mqk2233/blog-file/img/19.jpg',
+  'https://cdn.jsdelivr.net/gh/mqk2233/blog-file/img/20.jpg',
+  'https://cdn.jsdelivr.net/gh/mqk2233/blog-file/img/21.jpg',
+  'https://cdn.jsdelivr.net/gh/mqk2233/blog-file/img/22.jpg'];
 export default {
   name: "Background",
   data() {
     return {};
   },
   props: {
-    bgs:{
+    bgs: {
       type: Array,
-      default: ()=>bgs
+      default: () => bgs
     },
     index: {
       type: Number,
