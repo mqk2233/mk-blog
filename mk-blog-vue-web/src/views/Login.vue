@@ -31,13 +31,15 @@
             <FormItem prop="verifyCode">
               <Row>
                 <i-col span="17">
-                  <i-input
-                      :maxlength="4"
-                      clearable
-                      placeholder="验证码"
-                      type="text"
-                      v-model="loginForm.verifyCode"
-                  />
+                  <label>
+                    <Input
+                        :maxlength="4"
+                        clearable
+                        placeholder="验证码"
+                        type="text"
+                        v-model="loginForm.verifyCode"
+                    />
+                  </label>
                 </i-col>
                 <i-col span="7">
                   <img
@@ -113,13 +115,11 @@ export default {
       this.$api.user
           .login(data)
           .then(res => {
-            console.log(this);
             this.$store.commit(LOGIN, res.data.data);
             Notice.success({title: "登录成功"});
             this.$router.push({name: "main"});
           })
           .catch(err => {
-            console.log(err);
             Notice.warning({title: err.data.msg});
           });
     },

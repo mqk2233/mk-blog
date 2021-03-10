@@ -16,10 +16,10 @@
                    :backgroundColor="item.backgroundColor"
                    ref='tool'
       />
-        <aplayer :fixed="player.fixed"
-                 :autoplay="player.autoplay"
-                 :audio="musicList"
-                  />
+      <aplayer :fixed="player.fixed"
+               :autoplay="player.autoplay"
+               :audio="musicList"
+      />
     </div>
   </div>
 </template>
@@ -74,13 +74,13 @@ export default {
         position: "left"
       },
       {
-        tabMsg: "保存",
+        tabMsg: "save",
         backgroundColor: "#add8e6",
         show: true,
         position: "left"
       },
       {
-        tabMsg: "隐藏",
+        tabMsg: "hide",
         backgroundColor: "#add8e6",
         show: true,
         position: "left"
@@ -116,8 +116,8 @@ export default {
   methods: {
     toolsClick(item) {
       switch (item.tabMsg) {
-        case "home":
-          window.open("https://github.com/CNMk");
+        case "github":
+          window.open("https://github.com/mqk2233");
           break;
         case "save":
           this.$refs.l2dMange.save(`live2d-${Date.now()}.png`);

@@ -26,7 +26,7 @@ export default {
     }
   },
   beforeCreate() {
-    console.log("%c MK-BLOG %c v".concat("1.0"," %c"),
+    console.log("%c MK-BLOG %c v".concat("1.0", " %c"),
         'background: #35495e;' +
         ' padding: 1px;' +
         ' border-radius: 3px 0 0 3px;' +

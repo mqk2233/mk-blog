@@ -160,6 +160,11 @@ export default {
           }
         },
         {
+          align: "center",
+          title: "写作时间",
+          key: "createTime"
+        },
+        {
           title: "操作",
           slot: "action",
           width: 200,
@@ -267,7 +272,9 @@ export default {
 .button {
   margin-right: 5px
 }
-.page{
-  float: right; margin-top: 1em;
+
+.page {
+  float: right;
+  margin-top: 1em;
 }
 </style>

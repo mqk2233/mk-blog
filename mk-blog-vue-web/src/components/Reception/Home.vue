@@ -40,7 +40,7 @@
           >
         </div>
       </Card>
-      <Spin v-show="bottom" >已经到底啦~~🤪</Spin>
+      <Spin v-show="bottom">已经到底啦~~🤪</Spin>
       <Spin v-show="loading">加载中~~😫</Spin>
       <MyBackTop/>
     </div>
@@ -69,6 +69,7 @@ export default {
   },
   methods: {
     async getArticleList() {
+      console.log(this.$route.params.labelId)
       this.loading = true;
       this.currentPage++;
       await this.$api.article
@@ -83,7 +84,6 @@ export default {
           .catch(err => {
             this.$Notice.warning({title: err.data.msg});
           });
-      console.log(this.total)
       if (this.pageSize * this.currentPage >= this.total) {
         this.bottom = true;
       }
@@ -97,7 +97,7 @@ export default {
         //变量scrollHeight是滚动条的总高度
         let scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight;
         //滚动条到底部的条件
-        if (scrollTop + windowHeight >= scrollHeight-1 && this.bottom !== true) {
+        if (scrollTop + windowHeight >= scrollHeight - 1 && this.bottom !== true) {
           //写后台加载数据的函数
           this.getArticleList()
         }
@@ -108,7 +108,6 @@ export default {
     this.scroll()
   }
 }
-;
 </script>
 <style scoped>
 .card-scale:hover {
@@ -129,7 +128,7 @@ h2 {
   font-size: 80px;
   top: 30%;
   color: white;
-  font-family: none,sans-serif;
+  font-family: none, sans-serif;
   text-shadow: 3px 0 5px #f8f8f9;
 }
 
@@ -169,7 +168,7 @@ h2 {
   text-shadow: 0 0 2px;
 }
 
-.loading{
+.loading {
   position: relative !important;
   top: 5vh;
 }

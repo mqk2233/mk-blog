@@ -174,13 +174,15 @@ export default {
 };
 </script>
 <style>
-.form{
+.form {
   width: 13em
 }
-.editor{
-  z-index: 0
+
+.editor {
+  z-index: 0 !important;
 }
-.row{
+
+.row {
   margin-top: 20px
 }
 </style>

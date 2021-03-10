@@ -38,28 +38,25 @@
       <Content class="content-style">
         <router-view/>
       </Content>
+      <ColorBar></ColorBar>
       <Footer class="layout-footer-center">
-        Copyright © 2019 - MK. All Rights Reserved
+        Copyright © 2020 - MK. All Rights Reserved
       </Footer>
     </Layout>
-    <vue-canvas-nest
-        :config="{ color: '#a3a3a3', opacity: '1', count: 80 }"
-        class="vue-canvas-nest-element"
-        style="z-index: 0 !important;"
-    />
     <app-live/>
   </div>
 </template>
 <script>
 import Live from "../components/Live2d.vue";
 import vueCanvasNest from "vue-canvas-nest";
+import ColorBar from "../components/ColorBar.vue";
 
 export default {
   components: {
     "app-live": Live,
-    vueCanvasNest
+    vueCanvasNest,
+    ColorBar
   },
-
   data() {
     return {
       lastScrollPosition: window.scrollY,
@@ -101,7 +98,11 @@ export default {
   mounted() {
     this.updateMenu();
     this.headerMove();
-  }
+  },
+  updated(){
+    this.updateMenu();
+    this.headerMove();
+  },
 };
 </script>
 <style scoped>
@@ -145,20 +146,6 @@ export default {
 
 .layout-header-bar-hover:hover {
   background-color: white;
-}
-
-.vue-canvas-nest-element {
-  display: block !important;
-  position: static;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  overflow: hidden;
-  pointer-events: none;
-  z-index: 2 !important;
-  opacity: 0.7;
-  background-color: #eeeeee;
 }
 
 .slide-up {

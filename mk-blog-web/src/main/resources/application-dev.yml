@@ -11,7 +11,6 @@ spring:
   jackson:
     default-property-inclusion: non_null
     date-format: yyyy-MM-dd HH:mm:ss
-    time-zone: GMT+8
   # datasource
   datasource:
     url: jdbc:mysql://127.0.0.1:3306/blog?serverTimezone=UTC&characterEncoding=utf8

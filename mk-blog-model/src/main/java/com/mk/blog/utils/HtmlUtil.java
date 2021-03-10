@@ -1,6 +1,8 @@
 package com.mk.blog.utils;
 
 import cn.hutool.core.collection.CollUtil;
+import com.mk.blog.enums.ResponseEnum;
+import com.mk.blog.exception.CustomException;
 import com.mk.blog.vo.AnchorVo;
 
 import java.util.ArrayList;
@@ -49,7 +51,7 @@ public class HtmlUtil {
             String sub = html.substring(m.start(), m.end());
             return cn.hutool.http.HtmlUtil.cleanHtmlTag(sub);
         }else{
-            return null;
+            throw new CustomException(ResponseEnum.PARAM_ERROR);
         }
     }
 

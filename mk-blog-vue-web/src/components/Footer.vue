@@ -9,7 +9,7 @@ export default {
   name: "app-footer",
   data() {
     return {
-      msg: "Copyright © 2019 - MK. All Rights Reserved"
+      msg: "Copyright © 2020 - MK. All Rights Reserved"
     };
   }
 };

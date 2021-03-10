@@ -283,7 +283,9 @@ export default {
 .button {
   margin-right: 5px
 }
-.page{
-  float: right; margin-top: 1em;
+
+.page {
+  float: right;
+  margin-top: 1em;
 }
 </style>

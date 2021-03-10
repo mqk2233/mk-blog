@@ -43,6 +43,7 @@ export default {
           });
     },
     jump(label) {
+      console.log(label.id)
       this.$router.push({name: 'blog', params: {labelId: label.id}})
     },
     randomColor() {

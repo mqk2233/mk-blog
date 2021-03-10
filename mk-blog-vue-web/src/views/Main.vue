@@ -83,20 +83,20 @@
             width="auto"
             ref="menu"
         >
-          <menu-item name="homeAdmin" replace to="/homeAdmin">
+          <menu-item name="homeAdmin" to="/homeAdmin">
             <Icon type="ios-paper-plane"/>
             <span>仪表盘</span>
           </menu-item>
-          <menu-item name="articleAdmin" replace to="/articleAdmin">
+          <menu-item name="articleAdmin" to="/articleAdmin">
             <Icon type="md-book"/>
             <span>文章管理</span>
           </menu-item>
 
-          <menu-item name="categoryAdmin" replace to="/categoryAdmin">
+          <menu-item name="categoryAdmin" to="/categoryAdmin">
             <Icon type="logo-buffer"/>
             <span>类别管理</span>
           </menu-item>
-          <menu-item name="labelAdmin" replace to="/labelAdmin">
+          <menu-item name="labelAdmin" to="/labelAdmin">
             <Icon type="md-attach"/>
             <span>标签管理</span>
           </menu-item>
@@ -131,7 +131,7 @@
           <router-view/>
         </Content>
         <Footer style="text-align: center;"
-        >Copyright © 2019 - MK. All Rights Reserved
+        >Copyright © 2020 - MK. All Rights Reserved
         </Footer>
       </Layout>
     </Layout>

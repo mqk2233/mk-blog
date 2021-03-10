@@ -16,7 +16,7 @@
           :scrollStyle="prop.scrollStyle"
       />
     </div>
-    <Anchor show-ink ref="toc" class="catalog toc">
+    <Anchor show-ink ref="toc" class="catalog toc" :bounds="1" :offset-top="100">
       <AnchorLink v-if="articleEdit.catalogTree.length !== 0" v-for="(item1, index1) in articleEdit.catalogTree"
                   :href="item1.id" :title="item1.title">
         <AnchorLink v-if="articleEdit.catalogTree[index1].childList.length !== 0"
@@ -27,15 +27,15 @@
                       :href="item3.id" :title="item3.title">
             <AnchorLink
                 v-if="articleEdit.catalogTree[index1].childList[index2].childList[index3].childList.length !== 0"
-                v-for="(item4, index4) in articleEdit.catalogTree[index1].childList[index2].childList[index3].childList[index4]"
+                v-for="(item4, index4) in articleEdit.catalogTree[index1].childList[index2].childList[index3].childList"
                 :href="item4.id" :title="item4.title">
               <AnchorLink
                   v-if="articleEdit.catalogTree[index1].childList[index2].childList[index3].childList[index4].childList.length !== 0"
-                  v-for="(item5, index5) in articleEdit.catalogTree[index1].childList[index2].childList[index3].childList[index4].childList[index5]"
+                  v-for="(item5, index5) in articleEdit.catalogTree[index1].childList[index2].childList[index3].childList[index4].childList"
                   :href="item5.id" :title="item5.title">
                 <AnchorLink
                     v-if="articleEdit.catalogTree[index1].childList[index2].childList[index3].childList[index4].childList[index5].childList.length !== 0"
-                    v-for="item6 in articleEdit.catalogTree[index1].childList[index2].childList[index3].childList[index4].childList[index5]"
+                    v-for="item6 in articleEdit.catalogTree[index1].childList[index2].childList[index3].childList[index4].childList[index5].childList"
                     :href="item6.id" :title="item6.title">
                 </AnchorLink>
               </AnchorLink>
@@ -125,7 +125,7 @@ export default {
 
 <style scoped>
 .card {
-  margin: 80vh 30vh 10vh 49vh;
+  margin: 80vh 40vh 10vh 45vh;
   width: 110vh;
 }
 

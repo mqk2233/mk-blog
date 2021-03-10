@@ -262,7 +262,6 @@ export default {
     },
     // 新增分类
     doAddCategory(param) {
-      console.log(param)
       this.$api.category
           .doAddCategory(param)
           .then(res => {
@@ -277,7 +276,6 @@ export default {
           });
     },
     doEditCategory(param) {
-      console.log(param)
       this.$api.category
           .doEditCategory(param)
           .then(res => {
