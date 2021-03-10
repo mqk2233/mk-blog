@@ -86,7 +86,13 @@ const router = new Router({
                     name: "addArticle",
                     component: () => import('../components/Backstage/AddArticle'),
                     meta: {title: "新增文章"}
-                }
+                },
+                {
+                    path: "/swagger",
+                    name: "swagger",
+                    component: () => import('../components/Backstage/Swagger'),
+                    meta: {title: "api文档"}
+                },
             ]
         }
     ],

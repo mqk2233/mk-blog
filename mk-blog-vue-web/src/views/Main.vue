@@ -83,24 +83,23 @@
             width="auto"
             ref="menu"
         >
-          <menu-item name="homeAdmin" to="/homeAdmin">
+          <menu-item name="homeAdmin" replace to="/homeAdmin">
             <Icon type="ios-paper-plane"/>
             <span>仪表盘</span>
           </menu-item>
-          <menu-item name="articleAdmin" to="/articleAdmin">
-            <Icon type="md-book"/>
+          <menu-item name="articleAdmin" replace to="/articleAdmin">
+            <Icon type="md-bookmarks" />
             <span>文章管理</span>
           </menu-item>
-
-          <menu-item name="categoryAdmin" to="/categoryAdmin">
+          <menu-item name="categoryAdmin" replace to="/categoryAdmin">
             <Icon type="logo-buffer"/>
             <span>类别管理</span>
           </menu-item>
-          <menu-item name="labelAdmin" to="/labelAdmin">
+          <menu-item name="labelAdmin" replace to="/labelAdmin">
             <Icon type="md-attach"/>
             <span>标签管理</span>
           </menu-item>
-          <menu-item name="api" to="api/swagger-ui/index.html?configUrl=/blog/v3/api-docs/swagger-config#/">
+          <menu-item name="swagger" replace to="/swagger">
             <Icon type="md-book"/>
             <span>api文档</span>
           </menu-item>
@@ -174,6 +173,14 @@ export default {
       if (path === "login") {
         this.$store.commit(LOGOUT, "");
       }
+    },
+    updateMenu() {
+      this.$nextTick(() => {
+        let menu = this.$refs.menu;
+        menu.updateOpened();
+        menu.updateActiveName();
+        menu.currentActiveName = this.$route.path.slice(1);
+      });
     }
   },
   created() {
@@ -197,12 +204,10 @@ export default {
     }
   },
   mounted() {
-    this.$nextTick(() => {
-      let menu = this.$refs.menu;
-      menu.updateOpened();
-      menu.updateActiveName();
-      menu.currentActiveName = this.$route.path.slice(1);
-    });
+    this.updateMenu();
+  },
+  updated() {
+    this.updateMenu();
   },
   components: {
     "app-live": Live2d
