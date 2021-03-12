@@ -26,7 +26,6 @@ public interface IArticleLabelService extends IService<ArticleLabel> {
      * @param articleId 文章id
      * @return {@link boolean }
      * @author MK
-     * @date 2021/2/24 10:31
      */
     boolean delByArticleId(Long articleId);
 }

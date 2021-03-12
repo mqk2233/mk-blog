@@ -18,7 +18,6 @@ public interface ILabelService extends IService<Label> {
      *
      * @return {@link List<LabelListVo> }
      * @author MK
-     * @date 2021/2/24 10:56
      */
     List<LabelListVo> labelList();
 

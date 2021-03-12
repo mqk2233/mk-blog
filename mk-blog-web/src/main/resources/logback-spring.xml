@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration scan="true" scanPeriod="60 seconds" debug="false">
-  <contextName>logback-MkBlog</contextName>
+  <contextName>logback-blog</contextName>
 
   <property name="LOG_HOME" value="logs"/>
   <!--控制台日志-->
@@ -11,12 +11,12 @@
   </appender>
   <!--文件日志-->
   <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-    <file>${LOG_HOME}/mk-blog.log</file>
+    <file>${LOG_HOME}/blog.log</file>
     <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
-      <fileNamePattern>${LOG_HOME}/MkBlog-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
-      <maxFileSize>100MB</maxFileSize>
+      <fileNamePattern>${LOG_HOME}/blog-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+      <maxFileSize>10MB</maxFileSize>
       <maxHistory>30</maxHistory>
-      <totalSizeCap>20GB</totalSizeCap>
+      <totalSizeCap>100MB</totalSizeCap>
     </rollingPolicy>
     <!--    <filter class="ch.qos.logback.classic.filter.LevelFilter">-->
     <!--      &lt;!&ndash;过滤 Error&ndash;&gt;-->
@@ -31,26 +31,24 @@
     </encoder>
   </appender>
 
-  <logger name="com.mk.blog.mapper" level="DEBUG"/>
-
-  <root level="INFO">
-    <appender-ref ref="STDOUT"/>
-    <appender-ref ref="FILE"/>
-  </root>
-
   <!-- 开发环境 -->
   <springProfile name="dev">
+    <root level="DEBUG">
+      <appender-ref ref="STDOUT"/>
+      <appender-ref ref="FILE"/>
+    </root>
     <logger name="com.mk.blog.mapper" level="DEBUG" additivity="false">
       <appender-ref ref="STDOUT"/>
       <appender-ref ref="FILE"/>
     </logger>
   </springProfile>
 
-  <!-- 生产环境. -->
+  <!-- 生产环境 -->
   <springProfile name="prod">
-    <logger name="com.mk.blog.mapper" level="INFO" additivity="false">
+    <root level="INFO">
+      <appender-ref ref="STDOUT"/>
       <appender-ref ref="FILE"/>
-    </logger>
+    </root>
   </springProfile>
 
 </configuration>

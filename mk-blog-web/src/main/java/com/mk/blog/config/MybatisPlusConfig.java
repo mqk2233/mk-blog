@@ -45,8 +45,6 @@ public class MybatisPlusConfig {
         MybatisPlusInterceptor interceptor = new MybatisPlusInterceptor();
         // 分页
         interceptor.addInnerInterceptor(new PaginationInnerInterceptor(DbType.MYSQL));
-        // sql性能规范
-//        interceptor.addInnerInterceptor(new IllegalSQLInnerInterceptor());
         // 防止全表更新与删除
         interceptor.addInnerInterceptor(new BlockAttackInnerInterceptor());
         return interceptor;

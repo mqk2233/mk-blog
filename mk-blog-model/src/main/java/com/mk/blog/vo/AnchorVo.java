@@ -6,7 +6,6 @@ import java.util.List;
 
 /**
  * @author MK
- * @date 2021/2/24
  */
 @Data
 public class AnchorVo {

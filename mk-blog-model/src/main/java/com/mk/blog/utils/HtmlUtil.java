@@ -43,14 +43,14 @@ public class HtmlUtil {
      * @return {@link String }
      * @author MK
      */
-    public static String getTitle(String html){
+    public static String getTitle(String html) {
         String a = "<h1>.*</h1>";
         Pattern p = Pattern.compile(a);
         Matcher m = p.matcher(html);
         if (m.find()) {
             String sub = html.substring(m.start(), m.end());
             return cn.hutool.http.HtmlUtil.cleanHtmlTag(sub);
-        }else{
+        } else {
             throw new CustomException(ResponseEnum.PARAM_ERROR);
         }
     }
@@ -79,39 +79,51 @@ public class HtmlUtil {
             }
         });
         list.sort(Comparator.comparing(AnchorVo::getSort));
-        int grade = 0;
-        List<AnchorVo> parentList = new ArrayList<>();
-        while (CollUtil.isEmpty(parentList) && grade != 7) {
-            grade += 1;
-            for (AnchorVo anchorVo : list) {
-                if (anchorVo.getGrade().equals(grade)) {
-                    parentList.add(anchorVo);
-                }
-            }
-        }
-        return getAnchorVos(list, grade, parentList);
+        // 获取文章标题
+        List<AnchorVo> parentList = list.stream()
+                .filter(item -> item.getGrade().equals(1))
+                .collect(Collectors.toList());
+        return getAnchorVos(1, parentList, list);
     }
 
     /**
-     * 对集合进行出来
+     * 对集合进行处理
      *
-     * @param list       要处理的数据集合
      * @param grade      等级
      * @param parentList 返回集合
+     * @param list       要处理的数据集合
      * @return {@link List<AnchorVo> }
      * @author MK
      */
-    private static List<AnchorVo> getAnchorVos(List<AnchorVo> list, int grade, List<AnchorVo> parentList) {
+    private static List<AnchorVo> getAnchorVos(int grade, List<AnchorVo> parentList, List<AnchorVo> list) {
         if (CollUtil.isNotEmpty(parentList)) {
             for (int i = 0; i < parentList.size(); i++) {
                 if (parentList.size() == i + 1) {
-                    parentList.get(i).setChildList(getTree(grade, parentList.get(i).getSort(), 999, list));
+                    Integer maxSort = getEndIndex(grade, parentList.get(i).getSort(), list);
+                    parentList.get(i).setChildList(getTree(grade, parentList.get(i).getSort(), maxSort == null ? Integer.MAX_VALUE : maxSort, list));
                 } else {
                     parentList.get(i).setChildList(getTree(grade, parentList.get(i).getSort(), parentList.get(i + 1).getSort(), list));
                 }
             }
         }
         return parentList;
+    }
+
+    /**
+     * 获取同等级的下一个标题对象的排序号
+     *
+     * @param grade 标题等级
+     * @param sort  排序号
+     * @param list  要处理的数据集合
+     * @return {@link Integer }
+     * @author MK
+     */
+    private static Integer getEndIndex(int grade, int sort, List<AnchorVo> list) {
+        return list.stream()
+                .filter(item -> item.getGrade().equals(grade) && item.getSort() > sort)
+                .findFirst()
+                .orElseGet(AnchorVo::new)
+                .getSort();
     }
 
     /**
@@ -129,25 +141,12 @@ public class HtmlUtil {
         //下级没有的话再下一级
         while (CollUtil.isEmpty(childList) && grade != 7) {
             grade += 1;
-            childList = getChildList(grade, minSort, maxSort, list);
+            Integer finalGrade = grade;
+            childList = list.stream()
+                    .filter(item -> item.getGrade().equals(finalGrade) && item.getSort() > minSort && item.getSort() < maxSort)
+                    .collect(Collectors.toList());
         }
-        return getAnchorVos(list, grade, childList);
-    }
-
-    /**
-     * 获取当前等级的子级集合
-     *
-     * @param grade      等级
-     * @param startIndex 开始指针
-     * @param endIndex   结束指针
-     * @param list       数据集合
-     * @return {@link List<AnchorVo> }
-     * @author MK
-     */
-    private static List<AnchorVo> getChildList(Integer grade, Integer startIndex, Integer endIndex, List<AnchorVo> list) {
-        return list.stream()
-                .filter(item -> item.getGrade().equals(grade) && item.getSort() > startIndex && item.getSort() < endIndex)
-                .collect(Collectors.toList());
+        return getAnchorVos(grade, childList, list);
     }
 
     /**
@@ -181,5 +180,4 @@ public class HtmlUtil {
             return 0;
         }
     }
-
 }

@@ -40,14 +40,14 @@ public class LogAspect {
         Method method = signature.getMethod();
         Operation apiOperation = method.getAnnotation(Operation.class);
         String methodOperation = null == apiOperation ? "" : apiOperation.summary();
-        StaticLog.info("\n\nip=========>{}\n" + "请求路径===>{}\n" + "方法描述===>{}\n" + "方法名=====>{}\n" + "参数=======>{}\n",
+        StaticLog.debug("\n\nip=========>{}\n" + "请求路径===>{}\n" + "方法描述===>{}\n" + "方法名=====>{}\n" + "参数=======>{}\n",
                 IpUtil.getIpAddress(request), request.getRequestURI(), methodOperation, method.getName(), pjp.getArgs());
         return pjp.proceed();
     }
 
     @After(value = "pointcut()")
     public void destroy() {
-        StaticLog.info("==========>方法用时{}ms<==========\n", System.currentTimeMillis() - threadLocal.get());
+        StaticLog.debug("==========>方法用时{}ms<==========\n", System.currentTimeMillis() - threadLocal.get());
         threadLocal.remove();
     }
 
