@@ -60,7 +60,7 @@
 
 * [vue-canvas-nest](https://gitee.com/xyhSuper/vue-canvas-nest)(网站背景插件)
 
-ps：图床用的是[sm.ms图床](https://sm.ms/)
+ps：界面参考https://eriri.ink/archives/Typecho-Theme-Aria.html
 
 ## 网站截图
 
